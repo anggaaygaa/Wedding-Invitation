@@ -1,0 +1,247 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useInView } from 'framer-motion'
+import { useRef, useState, useEffect } from 'react'
+import { Send, MessageCircle } from 'lucide-react'
+import JavaneseOrnament from '../ui/JavaneseOrnament'
+import { Wish, submitWish, getWishes, subscribeToWishes } from '@/lib/supabase'
+
+// Demo wishes for display before Supabase is connected
+const demoWishes: Wish[] = [
+    {
+        id: '1',
+        name: 'Budi Santoso',
+        message: 'Selamat menempuh hidup baru! Semoga menjadi keluarga yang sakinah, mawaddah, warahmah. Aamiin.',
+        created_at: new Date().toISOString(),
+    },
+    {
+        id: '2',
+        name: 'Siti Rahayu',
+        message: 'Barakallahu lakuma wa baraka alaikuma wa jamaah bainakuma fi khair. Semoga langgeng sampai Jannah!',
+        created_at: new Date(Date.now() - 3600000).toISOString(),
+    },
+    {
+        id: '3',
+        name: 'Ahmad Fauzi',
+        message: 'Congrats Eko & Keke! Semoga pernikahan kalian diberkahi Allah SWT. Happy wedding!',
+        created_at: new Date(Date.now() - 7200000).toISOString(),
+    },
+]
+
+function formatDate(dateString: string) {
+    const date = new Date(dateString)
+    return date.toLocaleDateString('id-ID', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    })
+}
+
+export default function WishesSection() {
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, margin: '-100px' })
+
+    const [wishes, setWishes] = useState<Wish[]>(demoWishes)
+    const [name, setName] = useState('')
+    const [message, setMessage] = useState('')
+    const [isSubmitting, setIsSubmitting] = useState(false)
+
+    useEffect(() => {
+        // Load wishes from Supabase
+        const loadWishes = async () => {
+            try {
+                const data = await getWishes()
+                if (data && data.length > 0) {
+                    setWishes(data)
+                }
+            } catch (error) {
+                console.log('Using demo wishes - Supabase not connected')
+            }
+        }
+
+        loadWishes()
+
+        // Subscribe to realtime updates
+        const unsubscribe = subscribeToWishes((newWishes) => {
+            setWishes(newWishes)
+        })
+
+        return () => {
+            unsubscribe()
+        }
+    }, [])
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault()
+
+        if (!name.trim() || !message.trim()) {
+            alert('Mohon isi nama dan ucapan Anda')
+            return
+        }
+
+        setIsSubmitting(true)
+
+        try {
+            await submitWish({ name, message })
+            setName('')
+            setMessage('')
+        } catch (error) {
+            // If Supabase is not connected, add to local state
+            const newWish: Wish = {
+                id: Date.now().toString(),
+                name,
+                message,
+                created_at: new Date().toISOString(),
+            }
+            setWishes([newWish, ...wishes])
+            setName('')
+            setMessage('')
+        } finally {
+            setIsSubmitting(false)
+        }
+    }
+
+    return (
+        <section id="wishes" className="py-20 px-4 bg-white relative">
+            <div className="max-w-4xl mx-auto">
+                {/* Section Title */}
+                <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-12"
+                >
+                    <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
+                        Ucapan & Doa
+                    </p>
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                        Kirim Ucapan
+                    </h2>
+                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+
+                    <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
+                        Berikan doa dan ucapan terbaik untuk kedua mempelai
+                    </p>
+                </motion.div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    {/* Wish Form */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                    >
+                        <form
+                            onSubmit={handleSubmit}
+                            className="bg-ivory rounded-2xl p-6 border border-gold/10"
+                        >
+                            <h3 className="font-serif text-xl text-brown mb-6 flex items-center gap-2">
+                                <MessageCircle size={20} className="text-gold" />
+                                Tulis Ucapan
+                            </h3>
+
+                            <div className="space-y-4">
+                                <div>
+                                    <label htmlFor="wishName" className="block text-brown text-sm font-medium mb-2">
+                                        Nama
+                                    </label>
+                                    <input
+                                        type="text"
+                                        id="wishName"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        className="input-field"
+                                        placeholder="Nama Anda"
+                                        required
+                                    />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="wishMessage" className="block text-brown text-sm font-medium mb-2">
+                                        Ucapan & Doa
+                                    </label>
+                                    <textarea
+                                        id="wishMessage"
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                        className="input-field min-h-[120px] resize-none"
+                                        placeholder="Tulis ucapan dan doa terbaik Anda..."
+                                        rows={4}
+                                        required
+                                    />
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    disabled={isSubmitting}
+                                    className="w-full btn-primary flex items-center justify-center gap-2 disabled:opacity-50"
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                            Mengirim...
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Send size={18} />
+                                            Kirim Ucapan
+                                        </>
+                                    )}
+                                </button>
+                            </div>
+                        </form>
+                    </motion.div>
+
+                    {/* Wishes List */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="bg-ivory rounded-2xl p-6 border border-gold/10 max-h-[500px] overflow-y-auto"
+                    >
+                        <h3 className="font-serif text-xl text-brown mb-6">
+                            Ucapan Tamu ({wishes.length})
+                        </h3>
+
+                        <div className="space-y-4">
+                            {wishes.map((wish, index) => (
+                                <motion.div
+                                    key={wish.id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    className="bg-white rounded-xl p-4 border border-gold/5"
+                                >
+                                    <div className="flex items-start gap-3">
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center flex-shrink-0">
+                                            <span className="text-white font-semibold text-sm">
+                                                {wish.name.charAt(0).toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <div className="flex items-center justify-between gap-2 mb-1">
+                                                <h4 className="text-brown font-medium text-sm truncate">
+                                                    {wish.name}
+                                                </h4>
+                                                <span className="text-brown/40 text-xs whitespace-nowrap">
+                                                    {wish.created_at && formatDate(wish.created_at)}
+                                                </span>
+                                            </div>
+                                            <p className="text-brown/70 text-sm leading-relaxed">
+                                                {wish.message}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                </div>
+            </div>
+        </section>
+    )
+}
