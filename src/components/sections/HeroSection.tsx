@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
 import CountdownTimer from '../ui/CountdownTimer'
-import JavaneseOrnament, { BatikBackground, FloatingMelati } from '../ui/JavaneseOrnament'
+import NarutoOrnament, { NarutoFloatingLeaves, NarutoCloudBackground } from '../ui/NarutoOrnament'
+import { KonohaLeaf, ShurikenDecoration } from '../ui/NarutoDecorations'
 
 // Wedding Date: March 28, 2026
 const weddingDate = new Date('2026-03-28T08:00:00')
@@ -15,21 +15,21 @@ export default function HeroSection() {
             id="home"
             className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden"
         >
-            {/* Batik Kawung Background Pattern */}
-            <BatikBackground />
+            {/* Cloud Background Pattern */}
+            <NarutoCloudBackground />
 
-            {/* Floating Melati Flowers */}
-            <FloatingMelati />
+            {/* Floating Konoha Leaves */}
+            <NarutoFloatingLeaves />
 
             {/* Decorative Frame */}
-            <JavaneseOrnament variant="frame" />
+            <NarutoOrnament variant="frame" />
 
-            {/* Wayang decorations on sides - hidden on mobile */}
+            {/* Konoha leaf decorations on sides - hidden on mobile */}
             <div className="hidden lg:block absolute left-8 top-1/2 -translate-y-1/2 opacity-20">
-                <JavaneseOrnament variant="wayang" />
+                <KonohaLeaf className="w-20 h-20 animate-float" />
             </div>
             <div className="hidden lg:block absolute right-8 top-1/2 -translate-y-1/2 opacity-20 -scale-x-100">
-                <JavaneseOrnament variant="wayang" />
+                <KonohaLeaf className="w-20 h-20 animate-float [animation-delay:2s]" />
             </div>
 
             {/* Content */}
@@ -41,7 +41,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8 }}
                     className="mb-8"
                 >
-                    <p className="text-gold text-xl md:text-2xl font-medium mb-3" style={{ fontFamily: 'serif' }}>
+                    <p className="text-naruto-orange text-xl md:text-2xl font-medium mb-3" style={{ fontFamily: 'serif' }}>
                         بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
                     </p>
                     <p className="text-brown dark:text-cream/80 text-sm md:text-base">
@@ -49,7 +49,7 @@ export default function HeroSection() {
                     </p>
                 </motion.div>
 
-                {/* Decorative Keris - center top */}
+                {/* Decorative Shuriken - center top */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -57,9 +57,9 @@ export default function HeroSection() {
                     className="flex justify-center mb-6"
                 >
                     <div className="flex items-center gap-4">
-                        <JavaneseOrnament variant="keris" className="opacity-30 -rotate-45" />
-                        <div className="w-16 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-                        <JavaneseOrnament variant="keris" className="opacity-30 rotate-45 -scale-x-100" />
+                        <ShurikenDecoration className="w-8 h-8 opacity-30 animate-spin-slow" />
+                        <div className="w-16 h-px bg-gradient-to-r from-transparent via-naruto-orange/50 to-transparent" />
+                        <ShurikenDecoration className="w-8 h-8 opacity-30 animate-spin-slow [animation-direction:reverse]" />
                     </div>
                 </motion.div>
 
@@ -82,26 +82,25 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mb-6"
                 >
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl gold-text mb-2 tracking-wide">
+                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-naruto-orange mb-2 tracking-wide drop-shadow-lg">
                         Eko
                     </h1>
                     <div className="flex items-center justify-center gap-6 my-4">
-                        <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-gold/60" />
-                        <motion.span
-                            className="text-gold text-3xl md:text-4xl font-serif"
-                            animate={{ scale: [1, 1.1, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
+                        <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-naruto-orange/60" />
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
                         >
-                            &
-                        </motion.span>
-                        <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-gold/60" />
+                            <KonohaLeaf className="w-10 h-10 text-konoha-green" />
+                        </motion.div>
+                        <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-naruto-orange/60" />
                     </div>
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl gold-text tracking-wide">
+                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-naruto-orange tracking-wide drop-shadow-lg">
                         Keke
                     </h1>
                 </motion.div>
 
-                {/* Javanese Quote */}
+                {/* Naruto Quote */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -109,10 +108,10 @@ export default function HeroSection() {
                     className="mb-6"
                 >
                     <p className="text-brown/60 dark:text-cream/60 text-sm italic">
-                        &ldquo;Witing tresno jalaran soko kulino&rdquo;
+                        &ldquo;I&apos;m not gonna run away, I never go back on my word! That&apos;s my nindo: my ninja way!&rdquo;
                     </p>
-                    <p className="text-brown/50 dark:text-cream/50 text-xs mt-1">
-                        Cinta tumbuh karena terbiasa
+                    <p className="text-naruto-orange/50 dark:text-naruto-orange/50 text-xs mt-1">
+                        Our promise to each other
                     </p>
                 </motion.div>
 
@@ -123,7 +122,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="mb-8"
                 >
-                    <div className="inline-block px-8 py-4 border-2 border-gold/30 dark:border-gold/50 rounded-full bg-white/50 dark:bg-dark-surface/50 backdrop-blur-sm">
+                    <div className="inline-block px-8 py-4 border-2 border-naruto-orange/30 dark:border-naruto-orange/50 rounded-full bg-white/50 dark:bg-dark-surface/50 backdrop-blur-sm">
                         <p className="text-brown dark:text-cream font-medium text-lg">
                             Sabtu, 28 Maret 2026
                         </p>
@@ -136,7 +135,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.7 }}
                 >
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
                 </motion.div>
 
                 {/* Countdown */}
@@ -145,7 +144,7 @@ export default function HeroSection() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                    <p className="text-brown/70 dark:text-cream/70 text-sm mb-4 tracking-wider">Menghitung Hari Menuju</p>
+                    <p className="text-brown/70 dark:text-cream/70 text-sm mb-4 tracking-wider">Countdown Menuju Hari H</p>
                     <CountdownTimer targetDate={weddingDate} />
                 </motion.div>
 
@@ -153,7 +152,7 @@ export default function HeroSection() {
 
             {/* Bottom Ornament */}
             <div className="absolute bottom-0 left-0 right-0">
-                <JavaneseOrnament variant="bottom" />
+                <NarutoOrnament variant="bottom" />
             </div>
         </section>
     )

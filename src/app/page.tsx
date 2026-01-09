@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/ui/Navigation'
@@ -20,34 +20,39 @@ import RsvpSection from '@/components/sections/RsvpSection'
 import WishesSection from '@/components/sections/WishesSection'
 import GiftSection from '@/components/sections/GiftSection'
 import FooterSection from '@/components/sections/FooterSection'
-import JavaneseOrnament, { BatikBackground, FloatingMelati } from '@/components/ui/JavaneseOrnament'
-import FloatingParticles, { CornerOrnaments, AnimatedBatikBg } from '@/components/ui/FloatingParticles'
-import { SidePillars, RichBatikBackground, Gunungan, WayangDetail, SulurOrnament, WayangArjuna, WayangSemar, FloatingWayang } from '@/components/ui/JavaneseDecorations'
+import NarutoOrnament, { NarutoFloatingLeaves, NarutoCloudBackground } from '@/components/ui/NarutoOrnament'
+import {
+    KonohaLeaf,
+    ShurikenDecoration,
+    NinjaSilhouettes,
+    NarutoCornerOrnaments,
+    CloudPatternBackground
+} from '@/components/ui/NarutoDecorations'
 
-// Opening Cover Component with Javanese Theme
+// Opening Cover Component with Naruto Theme
 function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: string }) {
     return (
         <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="fixed inset-0 z-50 bg-gradient-to-br from-white via-ivory to-cream flex flex-col items-center justify-center px-4 overflow-hidden"
+            className="fixed inset-0 z-50 bg-gradient-to-br from-scroll-cream via-ivory to-cream flex flex-col items-center justify-center px-4 overflow-hidden"
         >
-            {/* Batik Background Pattern */}
-            <BatikBackground />
+            {/* Cloud Background Pattern */}
+            <NarutoCloudBackground />
 
-            {/* Floating Melati */}
-            <FloatingMelati />
+            {/* Floating Konoha Leaves */}
+            <NarutoFloatingLeaves />
 
             {/* Decorative Frame */}
-            <JavaneseOrnament variant="frame" />
+            <NarutoOrnament variant="frame" />
 
-            {/* Wayang decorations - hidden on mobile */}
-            <div className="hidden md:block absolute left-4 bottom-1/4 opacity-15">
-                <JavaneseOrnament variant="wayang" />
+            {/* Konoha leaf decorations on sides - hidden on mobile */}
+            <div className="hidden md:block absolute left-8 bottom-1/4 opacity-20">
+                <KonohaLeaf className="w-24 h-24 animate-float" />
             </div>
-            <div className="hidden md:block absolute right-4 bottom-1/4 opacity-15 -scale-x-100">
-                <JavaneseOrnament variant="wayang" />
+            <div className="hidden md:block absolute right-8 bottom-1/4 opacity-20 -scale-x-100">
+                <KonohaLeaf className="w-24 h-24 animate-float [animation-delay:1s]" />
             </div>
 
             {/* Content */}
@@ -59,7 +64,7 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                     transition={{ delay: 0.2, duration: 0.6 }}
                     className="mb-6"
                 >
-                    <JavaneseOrnament variant="divider" />
+                    <NarutoOrnament variant="divider" />
                 </motion.div>
 
                 {/* Bismillah */}
@@ -67,7 +72,7 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="text-gold text-xl md:text-2xl mb-4 text-glow"
+                    className="text-naruto-orange text-xl md:text-2xl mb-4"
                     style={{ fontFamily: 'serif' }}
                 >
                     بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
@@ -88,41 +93,40 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                     </p>
                 </motion.div>
 
-                {/* Couple Names with elegant styling */}
+                {/* Couple Names with Naruto styling */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.6 }}
                     className="mb-4"
                 >
-                    <h1 className="font-serif text-5xl md:text-6xl gold-text mb-2 tracking-wide sparkle-burst">
+                    <h1 className="font-serif text-5xl md:text-6xl text-naruto-orange mb-2 tracking-wide drop-shadow-lg">
                         Eko
                     </h1>
                     <div className="flex items-center justify-center gap-4 my-3">
-                        <div className="w-12 h-px bg-gold/40" />
-                        <motion.span
-                            className="text-gold text-3xl font-serif"
-                            animate={{ scale: [1, 1.15, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
+                        <div className="w-12 h-px bg-naruto-orange/40" />
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
                         >
-                            &
-                        </motion.span>
-                        <div className="w-12 h-px bg-gold/40" />
+                            <ShurikenDecoration className="w-8 h-8 text-naruto-orange" />
+                        </motion.div>
+                        <div className="w-12 h-px bg-naruto-orange/40" />
                     </div>
-                    <h1 className="font-serif text-5xl md:text-6xl gold-text tracking-wide sparkle-burst">
+                    <h1 className="font-serif text-5xl md:text-6xl text-naruto-orange tracking-wide drop-shadow-lg">
                         Keke
                     </h1>
                 </motion.div>
 
-                {/* Keris decoration */}
+                {/* Kunai decoration */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
                     className="flex justify-center gap-6 mb-4"
                 >
-                    <JavaneseOrnament variant="keris" className="opacity-25 -rotate-12 h-10" />
-                    <JavaneseOrnament variant="keris" className="opacity-25 rotate-12 -scale-x-100 h-10" />
+                    <NarutoOrnament variant="kunai" className="opacity-40 -rotate-12 h-10" />
+                    <NarutoOrnament variant="kunai" className="opacity-40 rotate-12 -scale-x-100 h-10" />
                 </motion.div>
 
                 <motion.div
@@ -131,7 +135,7 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                     transition={{ delay: 0.8 }}
                     className="mb-6"
                 >
-                    <div className="inline-block px-8 py-3 border-2 border-gold/40 rounded-full glass-ultra glow-ring">
+                    <div className="inline-block px-8 py-3 border-2 border-naruto-orange/40 rounded-full bg-white/60 backdrop-blur-sm shadow-lg">
                         <p className="text-brown/80 dark:text-cream/80 text-sm md:text-base font-medium">
                             Sabtu, 28 Maret 2026
                         </p>
@@ -143,22 +147,22 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9 }}
-                    className="mb-8 p-6 glass-ultra rounded-2xl border border-gold/20 gradient-border-animated"
+                    className="mb-8 p-6 bg-white/70 backdrop-blur-sm rounded-2xl border-2 border-naruto-orange/20 shadow-lg"
                 >
                     <p className="text-brown/60 dark:text-cream/60 text-xs tracking-wider mb-2">Kepada Yth.</p>
-                    <p className="text-brown dark:text-cream font-medium text-xl mb-1 gold-text">
+                    <p className="text-brown dark:text-cream font-medium text-xl mb-1 text-naruto-orange">
                         {guestName || 'Bapak/Ibu/Saudara/i'}
                     </p>
                     <p className="text-brown/50 dark:text-cream/50 text-xs">beserta keluarga</p>
                 </motion.div>
 
-                {/* Open Button with Javanese style */}
+                {/* Open Button with Ninja scroll style */}
                 <motion.button
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.1 }}
                     onClick={onOpen}
-                    className="btn-ultra-premium px-12 py-4 text-base relative overflow-hidden group"
+                    className="px-12 py-4 text-base relative overflow-hidden group bg-gradient-to-r from-naruto-orange to-naruto-yellow text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
                     <span className="relative z-10 flex items-center gap-3">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="group-hover:scale-110 transition-transform">
@@ -168,14 +172,14 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                     </span>
                 </motion.button>
 
-                {/* Javanese quote */}
+                {/* Naruto quote */}
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.3 }}
-                    className="text-brown/30 text-xs mt-6 italic"
+                    className="text-brown/40 text-xs mt-6 italic"
                 >
-                    &ldquo;Saged kepanggih kalih panjenengan&rdquo;
+                    &ldquo;The bond between two people is the greatest power of all&rdquo;
                 </motion.p>
             </div>
 
@@ -186,9 +190,9 @@ function OpeningCover({ onOpen, guestName }: { onOpen: () => void; guestName: st
                 transition={{ delay: 1.4 }}
                 className="absolute bottom-8 left-1/2 -translate-x-1/2"
             >
-                <div className="flex items-center gap-2 text-gold/40">
+                <div className="flex items-center gap-2 text-naruto-orange/40">
                     <div className="w-8 h-px bg-current" />
-                    <div className="w-1.5 h-1.5 rounded-full bg-current" />
+                    <KonohaLeaf className="w-6 h-6" />
                     <div className="w-8 h-px bg-current" />
                 </div>
             </motion.div>
@@ -222,39 +226,26 @@ function HomeContent() {
 
             {isOpen && (
                 <>
-                    {/* Floating Particles - Kelopak Bunga */}
-                    <FloatingParticles />
+                    {/* Floating Konoha Leaves */}
+                    <NarutoFloatingLeaves />
 
-                    {/* Rich Batik Background */}
-                    <RichBatikBackground />
+                    {/* Cloud Pattern Background */}
+                    <CloudPatternBackground />
 
-                    {/* Side Pillars - Temple columns */}
-                    <SidePillars />
+                    {/* Side Ninja Silhouettes */}
+                    <NinjaSilhouettes />
 
-                    {/* Corner Ornaments with Glow */}
+                    {/* Corner Ornaments with Konoha leaves */}
                     <div className="fixed inset-0 pointer-events-none z-[5]">
-                        <CornerOrnaments />
+                        <NarutoCornerOrnaments />
                     </div>
 
-                    {/* Gunungan decorations on sides - hidden on mobile */}
+                    {/* Konoha leaf decorations on sides - hidden on mobile */}
                     <div className="hidden lg:block fixed left-4 top-1/2 -translate-y-1/2 pointer-events-none z-[3] opacity-20">
-                        <Gunungan className="w-24 h-auto" />
+                        <KonohaLeaf className="w-20 h-auto animate-float" />
                     </div>
                     <div className="hidden lg:block fixed right-4 top-1/2 -translate-y-1/2 pointer-events-none z-[3] opacity-20 -scale-x-100">
-                        <Gunungan className="w-24 h-auto" />
-                    </div>
-
-                    {/* Wayang decoration at bottom corners - more visible */}
-                    <div className="hidden md:block fixed left-8 bottom-8 pointer-events-none z-[3] opacity-30">
-                        <WayangArjuna className="w-20 h-auto animate-wayang" />
-                    </div>
-                    <div className="hidden md:block fixed right-8 bottom-8 pointer-events-none z-[3] opacity-25 -scale-x-100">
-                        <WayangSemar className="w-24 h-auto animate-wayang-slow" />
-                    </div>
-
-                    {/* Floating Wayang Background - hidden on mobile */}
-                    <div className="hidden lg:block">
-                        <FloatingWayang />
+                        <KonohaLeaf className="w-20 h-auto animate-float" />
                     </div>
 
                     <Navigation />
@@ -281,14 +272,12 @@ function HomeContent() {
 }
 
 // Export with Suspense wrapper
-import { Suspense } from 'react'
-
 export default function Home() {
     return (
         <Suspense fallback={
-            <div className="min-h-screen flex items-center justify-center bg-white">
+            <div className="min-h-screen flex items-center justify-center bg-scroll-cream">
                 <div className="text-center">
-                    <div className="w-12 h-12 border-4 border-gold/30 border-t-gold rounded-full animate-spin mx-auto mb-4" />
+                    <div className="w-12 h-12 border-4 border-naruto-orange/30 border-t-naruto-orange rounded-full animate-spin mx-auto mb-4" />
                     <p className="text-brown/50 text-sm">Memuat undangan...</p>
                 </div>
             </div>

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Play, Pause, Youtube } from 'lucide-react'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 
 // Replace with actual YouTube video ID when available
 const YOUTUBE_VIDEO_ID = '' // Example: 'dQw4w9WgXcQ'
@@ -27,14 +27,14 @@ export default function VideoSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">
-                        Video
+                    <p className="text-naruto-orange text-sm tracking-[0.3em] uppercase mb-3">
+                        🎬 Video
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Prewedding Video
                     </h2>
 
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
                 </motion.div>
 
                 {/* Video Container */}

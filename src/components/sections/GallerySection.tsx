@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { X, ImageIcon } from 'lucide-react'
 import Image from 'next/image'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 import { getGalleryPhotos, GalleryPhoto } from '@/lib/supabase'
 
 export default function GallerySection() {
@@ -36,7 +36,7 @@ export default function GallerySection() {
 
     return (
         <>
-            <section id="gallery" className="py-20 px-4 bg-white relative">
+            <section id="gallery" className="py-20 px-4 bg-white dark:bg-dark-bg relative">
                 <div className="max-w-5xl mx-auto">
                     {/* Section Title */}
                     <motion.div
@@ -46,15 +46,15 @@ export default function GallerySection() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
-                        <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
-                            Galeri
+                        <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
+                            📸 Galeri
                         </p>
-                        <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                        <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                             Momen Bahagia
                         </h2>
-                        <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                        <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
-                        <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
+                        <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
                             Kumpulan momen indah perjalanan cinta kami
                         </p>
                     </motion.div>
@@ -62,7 +62,7 @@ export default function GallerySection() {
                     {/* Loading State */}
                     {loading && (
                         <div className="flex justify-center items-center py-12">
-                            <div className="animate-spin w-8 h-8 border-2 border-gold border-t-transparent rounded-full" />
+                            <div className="animate-spin w-8 h-8 border-2 border-naruto-orange border-t-transparent rounded-full" />
                         </div>
                     )}
 
@@ -75,15 +75,15 @@ export default function GallerySection() {
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="gallery-premium cursor-pointer group"
+                                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group border border-naruto-orange/10"
                                     onClick={() => setSelectedImage(photo)}
                                 >
                                     {imageErrors[photo.id || ''] ? (
                                         // Placeholder when image fails to load
-                                        <div className="absolute inset-0 bg-gradient-to-br from-cream to-ivory flex items-center justify-center">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-cream to-ivory dark:from-dark-surface dark:to-dark-card flex items-center justify-center">
                                             <div className="text-center">
-                                                <ImageIcon size={48} className="text-gold/30 mx-auto mb-2" />
-                                                <p className="text-brown/40 text-xs">Foto {index + 1}</p>
+                                                <ImageIcon size={48} className="text-naruto-orange/30 mx-auto mb-2" />
+                                                <p className="text-brown/40 dark:text-cream/40 text-xs">Foto {index + 1}</p>
                                             </div>
                                         </div>
                                     ) : (
@@ -99,9 +99,9 @@ export default function GallerySection() {
                                     )}
 
                                     {/* Hover Overlay */}
-                                    <div className="absolute inset-0 bg-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                    <div className="absolute inset-0 bg-naruto-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                         <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
-                                            <span className="text-gold text-xl">+</span>
+                                            <span className="text-naruto-orange text-xl">+</span>
                                         </div>
                                     </div>
                                 </motion.div>

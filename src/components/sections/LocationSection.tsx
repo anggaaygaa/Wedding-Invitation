@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { MapPin, Navigation } from 'lucide-react'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 
 export default function LocationSection() {
     const ref = useRef(null)
@@ -25,7 +25,7 @@ export default function LocationSection() {
         <section id="location" className="py-20 px-4 bg-ivory relative">
             {/* Top Ornament */}
             <div className="absolute top-0 left-0 right-0">
-                <JavaneseOrnament variant="top" />
+                <NarutoOrnament variant="top" />
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -37,13 +37,13 @@ export default function LocationSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
-                        Lokasi
+                    <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
+                        📍 Lokasi
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Petunjuk Arah
                     </h2>
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
                 </motion.div>
 
                 {/* Map Container */}
@@ -100,7 +100,7 @@ export default function LocationSection() {
 
             {/* Bottom Ornament */}
             <div className="absolute bottom-0 left-0 right-0">
-                <JavaneseOrnament variant="bottom" />
+                <NarutoOrnament variant="bottom" />
             </div>
         </section>
     )

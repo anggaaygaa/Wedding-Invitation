@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { Gift, Copy, Check, CreditCard, QrCode, Smartphone } from 'lucide-react'
 import Image from 'next/image'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 import { getGiftAccounts, GiftAccount } from '@/lib/supabase'
 
 function BankCard({ account }: { account: GiftAccount }) {
@@ -61,8 +61,8 @@ function BankCard({ account }: { account: GiftAccount }) {
                     <button
                         onClick={copyToClipboard}
                         className={`p-2 rounded-lg transition-all ${copied
-                                ? 'bg-green-100 text-green-600'
-                                : 'bg-gold/10 text-gold hover:bg-gold/20'
+                            ? 'bg-green-100 text-green-600'
+                            : 'bg-gold/10 text-gold hover:bg-gold/20'
                             }`}
                         title="Salin nomor rekening"
                     >
@@ -137,7 +137,7 @@ export default function GiftSection() {
         <section id="gift" className="py-20 px-4 bg-ivory relative">
             {/* Top Ornament */}
             <div className="absolute top-0 left-0 right-0">
-                <JavaneseOrnament variant="top" />
+                <NarutoOrnament variant="top" />
             </div>
 
             <div className="max-w-2xl mx-auto">
@@ -158,7 +158,7 @@ export default function GiftSection() {
                     <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
                         Amplop Digital
                     </h2>
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
                     <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
                         Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin
@@ -207,7 +207,7 @@ export default function GiftSection() {
 
             {/* Bottom Ornament */}
             <div className="absolute bottom-0 left-0 right-0">
-                <JavaneseOrnament variant="bottom" />
+                <NarutoOrnament variant="bottom" />
             </div>
         </section>
     )

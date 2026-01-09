@@ -4,10 +4,12 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Calendar, Clock, MapPin } from 'lucide-react'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
+import { ShurikenDecoration } from '../ui/NarutoDecorations'
 
 interface EventCardProps {
     title: string
+    subtitle: string
     date: string
     time: string
     location: string
@@ -15,7 +17,7 @@ interface EventCardProps {
     delay?: number
 }
 
-function EventCard({ title, date, time, location, address, delay = 0 }: EventCardProps) {
+function EventCard({ title, subtitle, date, time, location, address, delay = 0 }: EventCardProps) {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: '-100px' })
 
@@ -37,33 +39,39 @@ function EventCard({ title, date, time, location, address, delay = 0 }: EventCar
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay }}
-            className="card-ultra-premium p-6 md:p-8"
+            className="relative bg-white/80 dark:bg-dark-surface/80 backdrop-blur-sm rounded-2xl border-2 border-naruto-orange/20 p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow"
         >
-            {/* Title */}
+            {/* Corner Shuriken */}
+            <div className="absolute -top-3 -right-3">
+                <ShurikenDecoration className="w-8 h-8 animate-spin-slow opacity-40" />
+            </div>
+
+            {/* Title - Mission Briefing Style */}
             <div className="text-center mb-6">
-                <h3 className="font-serif text-2xl md:text-3xl gold-text mb-2 sparkle-burst">
+                <p className="text-naruto-orange/70 text-xs uppercase tracking-wider mb-1">{subtitle}</p>
+                <h3 className="font-serif text-2xl md:text-3xl text-naruto-orange mb-2 drop-shadow">
                     {title}
                 </h3>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto" />
+                <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-naruto-orange to-transparent mx-auto" />
             </div>
 
             {/* Details */}
             <div className="space-y-4">
                 {/* Date */}
                 <div className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-all group-hover:scale-105 glow-ring">
-                        <Calendar size={22} className="text-gold" />
+                    <div className="w-12 h-12 rounded-full bg-naruto-orange/10 flex items-center justify-center flex-shrink-0 group-hover:bg-naruto-orange/20 transition-all group-hover:scale-105">
+                        <Calendar size={22} className="text-naruto-orange" />
                     </div>
                     <div>
-                        <p className="text-brown/60 dark:text-cream/60 text-xs uppercase tracking-wide">Tanggal</p>
+                        <p className="text-brown/60 dark:text-cream/60 text-xs uppercase tracking-wide">Tanggal Misi</p>
                         <p className="text-brown dark:text-cream font-medium">{date}</p>
                     </div>
                 </div>
 
                 {/* Time */}
                 <div className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-all group-hover:scale-105 glow-ring">
-                        <Clock size={22} className="text-gold" />
+                    <div className="w-12 h-12 rounded-full bg-naruto-orange/10 flex items-center justify-center flex-shrink-0 group-hover:bg-naruto-orange/20 transition-all group-hover:scale-105">
+                        <Clock size={22} className="text-naruto-orange" />
                     </div>
                     <div>
                         <p className="text-brown/60 dark:text-cream/60 text-xs uppercase tracking-wide">Waktu</p>
@@ -73,8 +81,8 @@ function EventCard({ title, date, time, location, address, delay = 0 }: EventCar
 
                 {/* Location */}
                 <div className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/20 transition-all group-hover:scale-105 glow-ring">
-                        <MapPin size={22} className="text-gold" />
+                    <div className="w-12 h-12 rounded-full bg-naruto-orange/10 flex items-center justify-center flex-shrink-0 group-hover:bg-naruto-orange/20 transition-all group-hover:scale-105">
+                        <MapPin size={22} className="text-naruto-orange" />
                     </div>
                     <div>
                         <p className="text-brown/60 dark:text-cream/60 text-xs uppercase tracking-wide">Lokasi</p>
@@ -84,7 +92,7 @@ function EventCard({ title, date, time, location, address, delay = 0 }: EventCar
             </div>
 
             {/* Address */}
-            <div className="mt-6 p-4 glass-ultra rounded-xl">
+            <div className="mt-6 p-4 bg-scroll-cream/50 dark:bg-dark-card/50 rounded-xl border border-naruto-orange/10">
                 <p className="text-brown/70 dark:text-cream/70 text-sm text-center leading-relaxed">
                     {address}
                 </p>
@@ -93,9 +101,9 @@ function EventCard({ title, date, time, location, address, delay = 0 }: EventCar
             {/* Add to Calendar Button */}
             <button
                 onClick={addToCalendar}
-                className="w-full mt-6 btn-ultra-premium text-sm"
+                className="w-full mt-6 px-6 py-3 bg-gradient-to-r from-naruto-orange to-naruto-yellow text-white font-semibold rounded-full shadow-md hover:shadow-lg transition-all hover:scale-[1.02] text-sm"
             >
-                Simpan ke Kalender
+                📅 Simpan ke Kalender
             </button>
         </motion.div>
     )
@@ -106,7 +114,7 @@ export default function EventSection() {
     const isInView = useInView(ref, { once: true, margin: '-100px' })
 
     return (
-        <section id="event" className="py-20 px-4 bg-white relative">
+        <section id="event" className="py-20 px-4 bg-white dark:bg-dark-bg relative">
             <div className="max-w-4xl mx-auto">
                 {/* Section Title */}
                 <motion.div
@@ -116,15 +124,15 @@ export default function EventSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-16"
                 >
-                    <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
-                        Rangkaian Acara
+                    <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
+                        📜 Mission Briefing
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Waktu & Tempat
                     </h2>
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
-                    <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
+                    <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
                         Dengan memohon rahmat dan ridho Allah SWT, kami mengundang
                         Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.
                     </p>
@@ -134,6 +142,7 @@ export default function EventSection() {
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                     <EventCard
                         title="Akad Nikah"
+                        subtitle="Main Mission"
                         date="Sabtu, 28 Maret 2026"
                         time="08.00 WIB - Selesai"
                         location="Kediaman Mempelai Wanita"
@@ -143,6 +152,7 @@ export default function EventSection() {
 
                     <EventCard
                         title="Resepsi"
+                        subtitle="Celebration Quest"
                         date="Sabtu, 28 Maret 2026"
                         time="12.00 WIB - Selesai"
                         location="Kediaman Mempelai Wanita"

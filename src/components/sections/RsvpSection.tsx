@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import { Check, Users, Send } from 'lucide-react'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 import { submitRSVP } from '@/lib/supabase'
 
 export default function RsvpSection() {
@@ -47,7 +47,7 @@ export default function RsvpSection() {
         return (
             <section id="rsvp" className="py-20 px-4 bg-ivory relative">
                 <div className="absolute top-0 left-0 right-0">
-                    <JavaneseOrnament variant="top" />
+                    <NarutoOrnament variant="top" />
                 </div>
 
                 <div className="max-w-lg mx-auto text-center">
@@ -70,7 +70,7 @@ export default function RsvpSection() {
                 </div>
 
                 <div className="absolute bottom-0 left-0 right-0">
-                    <JavaneseOrnament variant="bottom" />
+                    <NarutoOrnament variant="bottom" />
                 </div>
             </section>
         )
@@ -80,7 +80,7 @@ export default function RsvpSection() {
         <section id="rsvp" className="py-20 px-4 bg-ivory relative">
             {/* Top Ornament */}
             <div className="absolute top-0 left-0 right-0">
-                <JavaneseOrnament variant="top" />
+                <NarutoOrnament variant="top" />
             </div>
 
             <div className="max-w-lg mx-auto">
@@ -92,15 +92,15 @@ export default function RsvpSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
-                        RSVP
+                    <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
+                        ✉️ RSVP
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Konfirmasi Kehadiran
                     </h2>
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
-                    <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
+                    <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
                         Mohon konfirmasi kehadiran Anda untuk membantu kami
                         mempersiapkan acara dengan lebih baik.
                     </p>
@@ -221,7 +221,7 @@ export default function RsvpSection() {
 
             {/* Bottom Ornament */}
             <div className="absolute bottom-0 left-0 right-0">
-                <JavaneseOrnament variant="bottom" />
+                <NarutoOrnament variant="bottom" />
             </div>
         </section>
     )

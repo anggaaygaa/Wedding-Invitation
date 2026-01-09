@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { Send, MessageCircle } from 'lucide-react'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 import { Wish, submitWish, getWishes, subscribeToWishes } from '@/lib/supabase'
 
 // Demo wishes for display before Supabase is connected
@@ -115,15 +115,15 @@ export default function WishesSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
-                        Ucapan & Doa
+                    <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
+                        💬 Ucapan & Doa
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Kirim Ucapan
                     </h2>
-                    <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                    <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
-                    <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
+                    <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
                         Berikan doa dan ucapan terbaik untuk kedua mempelai
                     </p>
                 </motion.div>

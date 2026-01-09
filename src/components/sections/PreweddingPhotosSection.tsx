@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { X, Camera, Heart } from 'lucide-react'
 import Image from 'next/image'
-import JavaneseOrnament from '../ui/JavaneseOrnament'
+import NarutoOrnament from '../ui/NarutoOrnament'
 import { getGalleryPhotos, GalleryPhoto } from '@/lib/supabase'
 
 export default function PreweddingPhotosSection() {
@@ -39,7 +39,7 @@ export default function PreweddingPhotosSection() {
             <section id="prewedding-photos" className="py-20 px-4 bg-ivory relative overflow-hidden">
                 {/* Top Ornament */}
                 <div className="absolute top-0 left-0 right-0">
-                    <JavaneseOrnament variant="top" />
+                    <NarutoOrnament variant="top" />
                 </div>
 
                 {/* Batik Pattern Background */}
@@ -56,23 +56,23 @@ export default function PreweddingPhotosSection() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
-                        <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
-                            <Camera size={28} className="text-gold" />
+                        <div className="w-16 h-16 rounded-full bg-naruto-orange/10 flex items-center justify-center mx-auto mb-6">
+                            <Camera size={28} className="text-naruto-orange" />
                         </div>
 
-                        <p className="text-gold text-sm tracking-[0.3em] uppercase mb-3">
-                            Galeri Foto
+                        <p className="text-naruto-orange text-sm tracking-[0.3em] uppercase mb-3">
+                            📷 Galeri Foto
                         </p>
-                        <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                        <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                             Prewedding Photos
                         </h2>
-                        <JavaneseOrnament variant="divider" className="max-w-xs mx-auto" />
+                        <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
-                        <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base italic">
-                            &ldquo;Witing tresno jalaran soko kulino&rdquo;
+                        <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base italic">
+                            &ldquo;When people are protecting something truly special to them, they truly can become as strong as they can be.&rdquo;
                         </p>
-                        <p className="text-brown/50 text-xs mt-2">
-                            Cinta tumbuh karena terbiasa bersama
+                        <p className="text-naruto-orange/50 text-xs mt-2">
+                            - Naruto Uzumaki
                         </p>
                     </motion.div>
 
@@ -98,8 +98,8 @@ export default function PreweddingPhotosSection() {
                                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                         transition={{ duration: 0.5, delay: index * 0.08 }}
                                         className={`relative rounded-xl overflow-hidden cursor-pointer group border border-gold/10 shadow-sm hover:shadow-lg transition-shadow ${isLarge ? 'col-span-2 row-span-2 aspect-square' :
-                                                isTall ? 'row-span-2 aspect-[3/4]' :
-                                                    'aspect-square'
+                                            isTall ? 'row-span-2 aspect-[3/4]' :
+                                                'aspect-square'
                                             }`}
                                         onClick={() => setSelectedImage(photo)}
                                     >
@@ -168,7 +168,7 @@ export default function PreweddingPhotosSection() {
 
                 {/* Bottom Ornament */}
                 <div className="absolute bottom-0 left-0 right-0">
-                    <JavaneseOrnament variant="bottom" />
+                    <NarutoOrnament variant="bottom" />
                 </div>
             </section>
 
