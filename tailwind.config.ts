@@ -10,28 +10,44 @@ const config: Config = {
     theme: {
         extend: {
             colors: {
-                // Naruto Anime Color Palette - Light Theme
-                'ivory': '#FFF8F0',
+                // === LIGHT MODE - Warm Scroll/Paper Aesthetic ===
+                'ivory': '#FFFAF5',
                 'gold': '#FF6B35',           // Naruto Orange (primary)
                 'gold-dark': '#E55A2B',      // Darker orange
-                'brown': '#1A1A2E',          // Ninja dark blue
+                'brown': '#2D2A26',          // Warm brown for text
                 'maroon': '#E63946',         // Sharingan red
-                'cream': '#FFF5E6',          // Scroll cream
-                // Additional Naruto Colors
+                'cream': '#FFF9F2',          // Warm cream
+                'scroll-bg': '#F8F4EE',      // Paper scroll background
+                'paper-cream': '#FFF8F0',    // Light paper color
+
+                // === NARUTO COLORS ===
                 'naruto-orange': '#FF6B35',
                 'naruto-yellow': '#FFB347',
+                'naruto-orange-light': '#FF8F62',
+                'naruto-orange-dark': '#D45A2B',
                 'konoha-green': '#2D5A27',
+                'konoha-green-light': '#4A7C3F',
                 'chakra-blue': '#4169E1',
+                'chakra-blue-light': '#6B8CE8',
+                'chakra-blue-dark': '#2E4DB3',
                 'sharingan-red': '#E63946',
+                'sharingan-red-light': '#FF5A68',
                 'uchiha-navy': '#16213E',
                 'scroll-cream': '#FFF5E6',
                 'leaf-green': '#228B22',
-                // Dark Theme Colors
-                'dark-bg': '#0D1117',
-                'dark-surface': '#161B22',
-                'dark-card': '#21262D',
+                'sage-green': '#3D8B37',
+
+                // === DARK MODE - Ninja Night Theme ===
+                'dark-bg': '#0A0D14',        // Deep ninja black
+                'dark-surface': '#12161F',   // Card surface
+                'dark-card': '#1A1F2E',      // Elevated card
+                'dark-elevated': '#232A3B',  // Modal/dropdown
+                'ninja-purple': '#1E1A2D',   // Subtle purple tint
+                'akatsuki-dark': '#0F0A0A',  // Deep red-black
+                'chakra-glow': '#5B8DEE',    // Glowing blue
                 'dark-text': '#F0F6FC',
-                'dark-text-secondary': '#8B949E',
+                'dark-text-secondary': '#9BA4B0',
+                'dark-border': '#2D3548',
             },
             fontFamily: {
                 'serif': ['Playfair Display', 'serif'],

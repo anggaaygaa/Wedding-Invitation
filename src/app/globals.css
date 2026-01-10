@@ -3,27 +3,27 @@
 @tailwind utilities;
 
 /* ============================================
-   JAVANESE WEDDING INVITATION - GLOBAL STYLES
-   Tema Adat Jawa Modern dengan Ornamen Tradisional
+   NARUTO WEDDING INVITATION - GLOBAL STYLES
+   Tema Naruto Anime dengan Estetika Ninja
    ============================================ */
 
-/* Custom Scrollbar dengan motif emas */
+/* Custom Scrollbar dengan motif Naruto */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(180deg, #FAF8F5 0%, #F5EFE6 100%);
+  background: linear-gradient(180deg, #FFFAF5 0%, #FFF8F0 100%);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #C9A961 0%, #8B7355 100%);
+  background: linear-gradient(180deg, #FF6B35 0%, #D45A2B 100%);
   border-radius: 5px;
-  border: 2px solid #FAF8F5;
+  border: 2px solid #FFFAF5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #D4AF37 0%, #C9A961 100%);
+  background: linear-gradient(180deg, #FF8F62 0%, #FF6B35 100%);
 }
 
 /* Base Styles */
@@ -40,178 +40,185 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #FFFFFF;
-  color: #4A3728;
+  background-color: #FFFAF5;
+  color: #2D2A26;
   overflow-x: hidden;
 }
 
 /* ============================================
-   LIGHT MODE - Comprehensive Text & Ornament Fixes
+   LIGHT MODE - Naruto Scroll/Paper Aesthetic
    ============================================ */
 html.light,
 html:not(.dark) {
 
-  /* Base text colors - darker for better contrast */
+  /* Base text colors - warm brown for readability */
   & .text-brown {
-    color: #3A2A1E !important;
+    color: #2D2A26 !important;
   }
 
   & .text-brown\/70,
   & .text-brown\/60,
   & .text-brown\/50,
   & .text-brown\/40 {
-    color: rgba(58, 42, 30, 0.85) !important;
+    color: rgba(45, 42, 38, 0.85) !important;
   }
 
-  /* Section backgrounds with subtle patterns */
+  /* Section backgrounds - warm scroll paper */
   & section {
-    background-color: #FFFFFF;
+    background-color: #FFFAF5;
   }
 
   & .bg-ivory {
-    background-color: #F8F6F3 !important;
+    background-color: #FFF8F0 !important;
   }
 
   & .bg-cream {
-    background-color: #F5F0E8 !important;
+    background-color: #FFF9F2 !important;
   }
 
-  /* Cards and surfaces */
+  /* Cards and surfaces with orange tint */
   & .bg-white\/50,
   & .bg-white\/60,
   & .bg-white\/80 {
-    background-color: rgba(255, 255, 255, 0.95) !important;
-    border: 1px solid rgba(201, 169, 97, 0.15);
+    background-color: rgba(255, 250, 245, 0.95) !important;
+    border: 1px solid rgba(255, 107, 53, 0.15);
   }
 
-  /* Ornaments more visible in light mode */
+  /* Naruto decorations visibility */
   & .opacity-20 {
-    opacity: 0.35 !important;
+    opacity: 0.3 !important;
   }
 
   & .opacity-30 {
-    opacity: 0.45 !important;
+    opacity: 0.4 !important;
   }
 
   & .opacity-40 {
-    opacity: 0.55 !important;
+    opacity: 0.5 !important;
   }
 
-  /* Gold elements more saturated */
+  /* Orange accent elements */
   & .text-gold {
-    color: #B8860B !important;
+    color: #FF6B35 !important;
   }
 
   & .border-gold\/20,
   & .border-gold\/30 {
-    border-color: rgba(184, 134, 11, 0.4) !important;
+    border-color: rgba(255, 107, 53, 0.3) !important;
   }
 
-  /* Input fields */
+  /* Input fields with warm paper bg */
   & input,
   & textarea,
   & select {
     background: #FFFFFF !important;
-    border: 1px solid rgba(58, 42, 30, 0.3) !important;
-    color: #3A2A1E !important;
+    border: 1px solid rgba(255, 107, 53, 0.25) !important;
+    color: #2D2A26 !important;
   }
 
   & input::placeholder,
   & textarea::placeholder {
-    color: rgba(58, 42, 30, 0.5) !important;
+    color: rgba(45, 42, 38, 0.5) !important;
   }
 
-  /* Decorative SVGs - make them darker/more visible */
+  /* Naruto elements styling */
   & svg {
-    filter: contrast(1.1) saturate(1.2);
+    filter: contrast(1.1) saturate(1.15);
   }
 
-  /* Wayang and ornaments */
-  & .animate-wayang,
-  & .animate-wayang-slow {
-    filter: drop-shadow(0 2px 4px rgba(74, 55, 40, 0.2)) contrast(1.2);
+  /* Konoha leaf and shuriken decorations */
+  & .animate-spin-slow,
+  & .animate-float {
+    filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.2));
   }
 
-  /* Batik pattern more visible */
-  & .batik-kawung-pattern,
-  & [class*="batik"] {
-    opacity: 0.15 !important;
-  }
-
-  /* Floating particles */
+  /* Leaf particles */
   & .petal,
   & .gold-dust {
-    opacity: 0.6;
-    filter: contrast(1.3);
+    opacity: 0.65;
+    filter: hue-rotate(-10deg) saturate(1.2);
   }
 }
 
 /* ============================================
-   DARK MODE - Enhanced Styling
+   DARK MODE - Ninja Night Theme
+   Deep purples, chakra blues, glowing effects
    ============================================ */
 html.dark {
   & body {
-    background-color: #1A1510 !important;
-    color: #E8E0D8 !important;
+    background-color: #0A0D14 !important;
+    color: #F0F6FC !important;
   }
 
-  /* Section backgrounds */
+  /* Section backgrounds - ninja night */
   & section {
-    background-color: #1A1510;
+    background-color: #0A0D14;
   }
 
   & .bg-ivory,
   & .bg-white {
-    background-color: #2A231D !important;
+    background-color: #12161F !important;
   }
 
   & .bg-cream {
-    background-color: #352D25 !important;
+    background-color: #1A1F2E !important;
   }
 
   /* Text colors for dark mode */
   & .text-brown {
-    color: #E8E0D8 !important;
+    color: #F0F6FC !important;
   }
 
   & .text-brown\/70,
   & .text-brown\/60,
   & .text-brown\/50,
   & .text-brown\/40 {
-    color: rgba(232, 224, 216, 0.8) !important;
+    color: rgba(240, 246, 252, 0.8) !important;
   }
 
-  /* Cards */
+  /* Cards with chakra glow */
   & .bg-white\/50,
   & .bg-white\/60,
   & .bg-white\/80 {
-    background-color: rgba(42, 35, 29, 0.9) !important;
-    border: 1px solid rgba(201, 169, 97, 0.3);
+    background-color: rgba(26, 31, 46, 0.9) !important;
+    border: 1px solid rgba(255, 107, 53, 0.25);
+    box-shadow: 0 0 20px rgba(255, 107, 53, 0.08);
   }
 
-  /* Gold elements */
+  /* Naruto orange elements glow */
   & .text-gold {
-    color: #D4AF37 !important;
+    color: #FF8F62 !important;
+    text-shadow: 0 0 15px rgba(255, 107, 53, 0.4);
   }
 
-  /* Input fields */
+  /* Input fields - dark surface */
   & input,
   & textarea,
   & select {
-    background: #2A231D !important;
-    border: 1px solid rgba(201, 169, 97, 0.4) !important;
-    color: #E8E0D8 !important;
+    background: #1A1F2E !important;
+    border: 1px solid rgba(255, 107, 53, 0.3) !important;
+    color: #F0F6FC !important;
   }
 
   & input::placeholder,
   & textarea::placeholder {
-    color: rgba(232, 224, 216, 0.5) !important;
+    color: rgba(240, 246, 252, 0.5) !important;
   }
 
-  /* Ornaments glow in dark mode */
-  & .animate-wayang,
-  & .animate-wayang-slow {
-    filter: drop-shadow(0 0 10px rgba(201, 169, 97, 0.4));
+  /* Naruto decorations with chakra glow */
+  & .animate-spin-slow,
+  & .animate-float {
+    filter: drop-shadow(0 0 12px rgba(255, 107, 53, 0.5));
+  }
+
+  /* Konoha leaf glow effect */
+  & .text-konoha-green {
+    text-shadow: 0 0 12px rgba(45, 90, 39, 0.6);
+  }
+
+  /* Chakra blue accents */
+  & .text-chakra-blue {
+    text-shadow: 0 0 15px rgba(65, 105, 225, 0.6);
   }
 }
 
