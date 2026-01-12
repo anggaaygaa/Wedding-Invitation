@@ -4,7 +4,6 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Navigation from '@/components/ui/Navigation'
-import MusicPlayer from '@/components/ui/MusicPlayer'
 import ShareButton from '@/components/ui/ShareButton'
 import ThemeToggle from '@/components/ui/ThemeToggle'
 import HeroSection from '@/components/sections/HeroSection'
@@ -262,7 +261,6 @@ function HomeContent() {
                     <WishesSection />
                     <GiftSection />
                     <FooterSection />
-                    <MusicPlayer autoPlay={true} />
                     <ThemeToggle />
                     <ShareButton guestName={guestName} />
                 </>
