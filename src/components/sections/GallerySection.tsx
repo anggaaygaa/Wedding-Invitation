@@ -80,9 +80,9 @@ export default function GallerySection() {
                                 >
                                     {imageErrors[photo.id || ''] ? (
                                         // Placeholder when image fails to load
-                                        <div className="absolute inset-0 bg-gradient-to-br from-cream to-ivory dark:from-dark-surface dark:to-dark-card flex items-center justify-center">
+                                        <div className="absolute inset-0 bg-gradient-to-br from-cream to-white dark:from-dark-surface dark:to-dark-card flex items-center justify-center">
                                             <div className="text-center">
-                                                <ImageIcon size={48} className="text-naruto-orange/30 mx-auto mb-2" />
+                                                <ImageIcon size={48} className="text-naruto-orange/40 mx-auto mb-2" />
                                                 <p className="text-brown/40 dark:text-cream/40 text-xs">Foto {index + 1}</p>
                                             </div>
                                         </div>
@@ -99,9 +99,9 @@ export default function GallerySection() {
                                     )}
 
                                     {/* Hover Overlay */}
-                                    <div className="absolute inset-0 bg-naruto-orange/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <div className="w-12 h-12 rounded-full bg-white/80 flex items-center justify-center">
-                                            <span className="text-naruto-orange text-xl">+</span>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-naruto-orange/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <div className="w-12 h-12 rounded-full bg-white/90 dark:bg-dark-surface/90 flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                                            <span className="text-naruto-orange text-2xl font-bold">+</span>
                                         </div>
                                     </div>
                                 </motion.div>
@@ -111,9 +111,9 @@ export default function GallerySection() {
 
                     {/* Empty State */}
                     {!loading && photos.length === 0 && (
-                        <div className="text-center py-12">
-                            <ImageIcon size={48} className="text-gold/30 mx-auto mb-4" />
-                            <p className="text-brown/50">Belum ada foto</p>
+                        <div className="text-center py-12 bg-white/50 dark:bg-dark-surface/50 rounded-2xl border border-naruto-orange/20">
+                            <ImageIcon size={48} className="text-naruto-orange/30 mx-auto mb-4" />
+                            <p className="text-brown/50 dark:text-cream/50">Belum ada foto</p>
                         </div>
                     )}
 
@@ -124,7 +124,7 @@ export default function GallerySection() {
                         transition={{ duration: 0.8, delay: 0.8 }}
                         className="text-center mt-8"
                     >
-                        <p className="text-brown/40 text-xs italic">
+                        <p className="text-brown/40 dark:text-cream/40 text-xs italic">
                             * Foto diambil dari database dan dapat dikelola secara dinamis
                         </p>
                     </motion.div>

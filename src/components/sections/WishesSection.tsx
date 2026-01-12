@@ -105,7 +105,7 @@ export default function WishesSection() {
     }
 
     return (
-        <section id="wishes" className="py-20 px-4 bg-white relative">
+        <section id="wishes" className="py-20 px-4 bg-cream dark:bg-dark-bg relative">
             <div className="max-w-4xl mx-auto">
                 {/* Section Title */}
                 <motion.div
@@ -137,10 +137,10 @@ export default function WishesSection() {
                     >
                         <form
                             onSubmit={handleSubmit}
-                            className="bg-ivory rounded-2xl p-6 border border-gold/10"
+                            className="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-naruto-orange/20 shadow-lg"
                         >
-                            <h3 className="font-serif text-xl text-brown mb-6 flex items-center gap-2">
-                                <MessageCircle size={20} className="text-gold" />
+                            <h3 className="font-serif text-xl text-brown dark:text-cream mb-6 flex items-center gap-2">
+                                <MessageCircle size={20} className="text-naruto-orange" />
                                 Tulis Ucapan
                             </h3>
 
@@ -201,9 +201,9 @@ export default function WishesSection() {
                         initial={{ opacity: 0, x: 50 }}
                         animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="bg-ivory rounded-2xl p-6 border border-gold/10 max-h-[500px] overflow-y-auto"
+                        className="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-naruto-orange/20 shadow-lg max-h-[500px] overflow-y-auto"
                     >
-                        <h3 className="font-serif text-xl text-brown mb-6">
+                        <h3 className="font-serif text-xl text-brown dark:text-cream mb-6">
                             Ucapan Tamu ({wishes.length})
                         </h3>
 
@@ -214,24 +214,24 @@ export default function WishesSection() {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="bg-white rounded-xl p-4 border border-gold/5"
+                                    className="bg-cream dark:bg-dark-card rounded-xl p-4 border border-naruto-orange/10"
                                 >
                                     <div className="flex items-start gap-3">
-                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center flex-shrink-0">
+                                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-naruto-orange to-naruto-orange-dark flex items-center justify-center flex-shrink-0 shadow-md">
                                             <span className="text-white font-semibold text-sm">
                                                 {wish.name.charAt(0).toUpperCase()}
                                             </span>
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="flex items-center justify-between gap-2 mb-1">
-                                                <h4 className="text-brown font-medium text-sm truncate">
+                                                <h4 className="text-brown dark:text-cream font-medium text-sm truncate">
                                                     {wish.name}
                                                 </h4>
-                                                <span className="text-brown/40 text-xs whitespace-nowrap">
+                                                <span className="text-brown/40 dark:text-cream/40 text-xs whitespace-nowrap">
                                                     {wish.created_at && formatDate(wish.created_at)}
                                                 </span>
                                             </div>
-                                            <p className="text-brown/70 text-sm leading-relaxed">
+                                            <p className="text-brown/70 dark:text-cream/70 text-sm leading-relaxed">
                                                 {wish.message}
                                             </p>
                                         </div>

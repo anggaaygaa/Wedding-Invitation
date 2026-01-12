@@ -17,7 +17,7 @@ export default function VideoSection() {
     const hasVideo = Boolean(YOUTUBE_VIDEO_ID)
 
     return (
-        <section id="video" className="py-20 px-4 bg-white relative overflow-hidden">
+        <section id="video" className="py-20 px-4 bg-cream dark:bg-dark-bg relative overflow-hidden">
             <div className="max-w-4xl mx-auto relative z-10">
                 {/* Section Title */}
                 <motion.div
@@ -42,7 +42,7 @@ export default function VideoSection() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="relative rounded-2xl overflow-hidden shadow-xl border border-gold/20"
+                    className="relative rounded-2xl overflow-hidden shadow-xl border border-naruto-orange/20 dark:border-naruto-orange/30"
                 >
                     {hasVideo ? (
                         /* YouTube Embed */
@@ -63,7 +63,7 @@ export default function VideoSection() {
                                     <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
                                     {/* Play Button */}
                                     <div className="absolute inset-0 flex items-center justify-center">
-                                        <div className="w-20 h-20 rounded-full bg-gold/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
+                                        <div className="w-20 h-20 rounded-full bg-naruto-orange/90 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg shadow-naruto-orange/30">
                                             <Play size={36} className="text-white ml-1" fill="white" />
                                         </div>
                                     </div>
@@ -81,13 +81,13 @@ export default function VideoSection() {
                         </div>
                     ) : (
                         /* Placeholder when no video */
-                        <div className="aspect-video bg-gradient-to-br from-cream to-ivory flex flex-col items-center justify-center">
-                            <div className="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center mb-4">
-                                <Youtube size={40} className="text-gold/50" />
+                        <div className="aspect-video bg-gradient-to-br from-cream to-white dark:from-dark-surface dark:to-dark-card flex flex-col items-center justify-center">
+                            <div className="w-20 h-20 rounded-full bg-naruto-orange/10 flex items-center justify-center mb-4">
+                                <Youtube size={40} className="text-naruto-orange/50" />
                             </div>
-                            <p className="text-brown/50 text-lg font-serif mb-2">Video Prewedding</p>
-                            <p className="text-brown/30 text-sm">Coming Soon</p>
-                            <p className="text-brown/20 text-xs mt-4 italic">
+                            <p className="text-brown/50 dark:text-cream/50 text-lg font-serif mb-2">Video Prewedding</p>
+                            <p className="text-brown/30 dark:text-cream/30 text-sm">Coming Soon</p>
+                            <p className="text-brown/20 dark:text-cream/20 text-xs mt-4 italic">
                                 * Video akan ditambahkan
                             </p>
                         </div>
@@ -99,7 +99,7 @@ export default function VideoSection() {
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-center text-brown/50 text-sm mt-6 italic"
+                    className="text-center text-brown/50 dark:text-cream/50 text-sm mt-6 italic"
                 >
                     Momen indah perjalanan cinta kami
                 </motion.p>

@@ -5,7 +5,7 @@ import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { X, Camera, Heart } from 'lucide-react'
 import Image from 'next/image'
-import NarutoOrnament from '../ui/NarutoOrnament'
+import NarutoOrnament, { NarutoCloudBackground } from '../ui/NarutoOrnament'
 import { getGalleryPhotos, GalleryPhoto } from '@/lib/supabase'
 
 export default function PreweddingPhotosSection() {
@@ -36,15 +36,15 @@ export default function PreweddingPhotosSection() {
 
     return (
         <>
-            <section id="prewedding-photos" className="py-20 px-4 bg-ivory relative overflow-hidden">
+            <section id="prewedding-photos" className="py-20 px-4 bg-cream dark:bg-dark-bg relative overflow-hidden">
                 {/* Top Ornament */}
                 <div className="absolute top-0 left-0 right-0">
                     <NarutoOrnament variant="top" />
                 </div>
 
-                {/* Batik Pattern Background */}
-                <div className="absolute inset-0 opacity-[0.02]">
-                    <div className="kawung-pattern w-full h-full" />
+                {/* Naruto Cloud Pattern Background */}
+                <div className="absolute inset-0 opacity-30 dark:opacity-20">
+                    <NarutoCloudBackground />
                 </div>
 
                 <div className="max-w-6xl mx-auto relative z-10">
@@ -79,7 +79,7 @@ export default function PreweddingPhotosSection() {
                     {/* Loading State */}
                     {loading && (
                         <div className="flex justify-center items-center py-12">
-                            <div className="animate-spin w-8 h-8 border-2 border-gold border-t-transparent rounded-full" />
+                            <div className="animate-spin w-8 h-8 border-2 border-naruto-orange border-t-transparent rounded-full" />
                         </div>
                     )}
 
@@ -97,7 +97,7 @@ export default function PreweddingPhotosSection() {
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                                         transition={{ duration: 0.5, delay: index * 0.08 }}
-                                        className={`relative rounded-xl overflow-hidden cursor-pointer group border border-gold/10 shadow-sm hover:shadow-lg transition-shadow ${isLarge ? 'col-span-2 row-span-2 aspect-square' :
+                                        className={`relative rounded-xl overflow-hidden cursor-pointer group border border-naruto-orange/20 dark:border-naruto-orange/30 shadow-sm hover:shadow-lg hover:shadow-naruto-orange/10 transition-all ${isLarge ? 'col-span-2 row-span-2 aspect-square' :
                                             isTall ? 'row-span-2 aspect-[3/4]' :
                                                 'aspect-square'
                                             }`}
@@ -105,9 +105,9 @@ export default function PreweddingPhotosSection() {
                                     >
                                         {imageErrors[photo.id || ''] ? (
                                             // Placeholder when image fails to load
-                                            <div className="absolute inset-0 bg-gradient-to-br from-cream to-ivory flex flex-col items-center justify-center">
-                                                <Camera size={32} className="text-gold/30 mb-2" />
-                                                <p className="text-brown/40 text-xs">Foto {index + 1}</p>
+                                            <div className="absolute inset-0 bg-gradient-to-br from-cream to-white dark:from-dark-surface dark:to-dark-card flex flex-col items-center justify-center">
+                                                <Camera size={32} className="text-naruto-orange/30 mb-2" />
+                                                <p className="text-brown/40 dark:text-cream/40 text-xs">Foto {index + 1}</p>
                                             </div>
                                         ) : (
                                             // Actual image with gradient overlay
@@ -127,13 +127,13 @@ export default function PreweddingPhotosSection() {
 
                                         {/* Hover Overlay with icon */}
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <div className="w-12 h-12 rounded-full bg-white/90 flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                                                <Heart size={20} className="text-gold" />
+                                            <div className="w-12 h-12 rounded-full bg-white/90 dark:bg-dark-surface/90 flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
+                                                <Heart size={20} className="text-naruto-orange" />
                                             </div>
                                         </div>
 
                                         {/* Photo number badge */}
-                                        <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-gold/80 text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-naruto-orange/80 text-white text-xs flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
                                             {index + 1}
                                         </div>
                                     </motion.div>
@@ -147,11 +147,11 @@ export default function PreweddingPhotosSection() {
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="text-center py-16 bg-white/50 rounded-2xl border border-gold/10"
+                            className="text-center py-16 bg-white/50 dark:bg-dark-surface/50 rounded-2xl border border-naruto-orange/20"
                         >
-                            <Camera size={48} className="text-gold/30 mx-auto mb-4" />
-                            <p className="text-brown/50 mb-2">Foto prewedding akan ditambahkan</p>
-                            <p className="text-brown/30 text-sm">Coming Soon</p>
+                            <Camera size={48} className="text-naruto-orange/30 mx-auto mb-4" />
+                            <p className="text-brown/50 dark:text-cream/50 mb-2">Foto prewedding akan ditambahkan</p>
+                            <p className="text-brown/30 dark:text-cream/30 text-sm">Coming Soon</p>
                         </motion.div>
                     )}
 
@@ -160,7 +160,7 @@ export default function PreweddingPhotosSection() {
                         initial={{ opacity: 0 }}
                         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
-                        className="text-center text-brown/40 text-xs mt-8 italic"
+                        className="text-center text-brown/40 dark:text-cream/40 text-xs mt-8 italic"
                     >
                         * Foto dikelola secara dinamis dari database
                     </motion.p>
@@ -195,10 +195,10 @@ export default function PreweddingPhotosSection() {
 
                     <div className="relative max-w-5xl w-full h-[85vh]" onClick={e => e.stopPropagation()}>
                         {imageErrors[selectedImage.id || ''] ? (
-                            <div className="w-full h-full bg-cream rounded-lg flex items-center justify-center">
+                            <div className="w-full h-full bg-cream dark:bg-dark-surface rounded-lg flex items-center justify-center">
                                 <div className="text-center">
-                                    <Camera size={48} className="text-gold/30 mx-auto mb-4" />
-                                    <p className="text-brown/50">Foto tidak dapat ditampilkan</p>
+                                    <Camera size={48} className="text-naruto-orange/30 mx-auto mb-4" />
+                                    <p className="text-brown/50 dark:text-cream/50">Foto tidak dapat ditampilkan</p>
                                 </div>
                             </div>
                         ) : (
