@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Calendar, Clock, MapPin } from 'lucide-react'
-import NarutoOrnament from '../ui/NarutoOrnament'
-import { ShurikenDecoration } from '../ui/NarutoDecorations'
+import NarutoOrnament, { SealPatternBackground } from '../ui/NarutoOrnament'
+import { ShurikenDecoration, FuinjutsuSeal, KunaiDecoration } from '../ui/NarutoDecorations'
 
 interface EventCardProps {
     title: string
@@ -39,11 +39,25 @@ function EventCard({ title, subtitle, date, time, location, address, delay = 0 }
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.8, delay }}
-            className="relative bg-white/80 dark:bg-dark-surface/80 backdrop-blur-sm rounded-2xl border-2 border-naruto-orange/20 p-6 md:p-8 shadow-lg hover:shadow-xl transition-shadow"
+            className="relative bg-white/80 dark:bg-dark-surface/80 backdrop-blur-sm rounded-2xl border-2 border-naruto-orange/20 p-6 md:p-8 shadow-lg hover:shadow-xl transition-all hover:border-naruto-orange/40 group overflow-hidden"
         >
-            {/* Corner Shuriken */}
-            <div className="absolute -top-3 -right-3">
-                <ShurikenDecoration className="w-8 h-8 animate-spin-slow opacity-40" />
+            {/* Mission Scroll Background Pattern */}
+            <NarutoOrnament variant="missionScroll" />
+
+            {/* Corner Shurikens */}
+            <div className="absolute -top-3 -right-3 z-10">
+                <ShurikenDecoration className="w-8 h-8 animate-spin-slow opacity-40 group-hover:opacity-60 transition-opacity" />
+            </div>
+            <div className="absolute -bottom-3 -left-3 z-10">
+                <ShurikenDecoration className="w-6 h-6 animate-spin-slow opacity-20 group-hover:opacity-40 transition-opacity [animation-direction:reverse]" />
+            </div>
+
+            {/* Kunai decorations - sides */}
+            <div className="absolute top-1/2 -left-2 -translate-y-1/2 opacity-10 hidden md:block">
+                <KunaiDecoration className="w-4 h-12 rotate-180" />
+            </div>
+            <div className="absolute top-1/2 -right-2 -translate-y-1/2 opacity-10 hidden md:block">
+                <KunaiDecoration className="w-4 h-12" />
             </div>
 
             {/* Title - Mission Briefing Style */}

@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Instagram } from 'lucide-react'
-import NarutoOrnament, { NarutoCloudBackground } from '../ui/NarutoOrnament'
-import { KonohaLeaf, ShurikenDecoration } from '../ui/NarutoDecorations'
+import NarutoOrnament, { NarutoCloudBackground, SealPatternBackground } from '../ui/NarutoOrnament'
+import { KonohaLeaf, ShurikenDecoration, MangekyoSharingan, FuinjutsuSeal, SharinganPattern } from '../ui/NarutoDecorations'
 
 interface CoupleCardProps {
     name: string
@@ -28,14 +28,27 @@ function CoupleCard({ name, fullName, parentInfo, order, instagram, delay = 0 }:
             transition={{ duration: 0.8, delay }}
             className="text-center"
         >
-            {/* Photo Frame with Naruto/Ninja styling */}
+            {/* Photo Frame with Naruto/Ninja styling - Enhanced */}
             <div className="relative w-52 h-52 md:w-64 md:h-64 mx-auto mb-8 group">
+                {/* Outer Sharingan-style rotating ring */}
+                <div className="absolute -inset-4 rounded-full opacity-20 dark:opacity-30">
+                    <SharinganPattern className="w-full h-full animate-spin-slow" />
+                </div>
+
                 {/* Outer animated glow ring - chakra blue */}
                 <div className="absolute inset-0 rounded-full border-2 border-chakra-blue/30 animate-chakra-pulse" />
+
                 {/* Rotating shuriken-style dashed border */}
                 <div className="absolute -inset-2 rounded-full border-2 border-dashed border-naruto-orange/20 animate-spin-slow" />
+
+                {/* Fuinjutsu seal pattern ring */}
+                <div className="absolute -inset-1 opacity-15 dark:opacity-25">
+                    <FuinjutsuSeal className="w-full h-full animate-spin-slow [animation-direction:reverse] [animation-duration:20s]" />
+                </div>
+
                 {/* Middle ring with gradient */}
                 <div className="absolute inset-2 rounded-full border-2 border-naruto-orange/40 bg-gradient-to-br from-naruto-orange/5 to-transparent" />
+
                 {/* Inner decorative ring */}
                 <div className="absolute inset-4 rounded-full border border-naruto-orange/50 overflow-hidden">
                     {/* Cloud pattern inside frame */}
@@ -43,8 +56,9 @@ function CoupleCard({ name, fullName, parentInfo, order, instagram, delay = 0 }:
                         <NarutoCloudBackground />
                     </div>
                 </div>
+
                 {/* Photo container */}
-                <div className="absolute inset-6 rounded-full bg-gradient-to-br from-ivory via-white to-cream flex items-center justify-center overflow-hidden border-2 border-naruto-orange/30 shadow-lg shadow-naruto-orange/20 group-hover:shadow-naruto-orange/40 transition-shadow duration-500">
+                <div className="absolute inset-6 rounded-full bg-gradient-to-br from-ivory via-white to-cream dark:from-dark-surface dark:via-dark-card dark:to-dark-elevated flex items-center justify-center overflow-hidden border-2 border-naruto-orange/30 shadow-lg shadow-naruto-orange/20 group-hover:shadow-naruto-orange/40 dark:group-hover:shadow-naruto-orange/30 transition-shadow duration-500">
                     {/* Placeholder - Replace with actual image */}
                     <div className="text-center">
                         <div className="text-5xl mb-2 opacity-50 group-hover:scale-110 transition-transform duration-300">
@@ -53,6 +67,7 @@ function CoupleCard({ name, fullName, parentInfo, order, instagram, delay = 0 }:
                         <p className="text-brown/40 dark:text-cream/40 text-xs">Foto</p>
                     </div>
                 </div>
+
                 {/* Corner ornaments with Konoha leaves */}
                 <div className="absolute -top-3 -left-3 w-10 h-10">
                     <NarutoOrnament variant="corner" className="w-full h-full opacity-70" />

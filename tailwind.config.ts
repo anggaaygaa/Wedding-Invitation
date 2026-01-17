@@ -37,6 +37,20 @@ const config: Config = {
                 'leaf-green': '#228B22',
                 'sage-green': '#3D8B37',
 
+                // === NEW NARUTO COLORS ===
+                'byakugan-white': '#F0F0FF',
+                'byakugan-lavender': '#E6E6FA',
+                'rinnegan-purple': '#9B59B6',
+                'rinnegan-light': '#BB8FCE',
+                'kyubi-gold': '#FFD700',
+                'kyubi-orange': '#FF8C00',
+                'akatsuki-red': '#8B0000',
+                'akatsuki-black': '#0D0D0D',
+                'hokage-fire': '#FF4500',
+                'anbu-gray': '#4A4A4A',
+                'scroll-tan': '#D2B48C',
+                'kunai-silver': '#C0C0C0',
+
                 // === DARK MODE - Ninja Night Theme ===
                 'dark-bg': '#0A0D14',        // Deep ninja black
                 'dark-surface': '#12161F',   // Card surface
@@ -57,6 +71,7 @@ const config: Config = {
             backgroundImage: {
                 'konoha-pattern': "url('/images/konoha-pattern.svg')",
                 'cloud-pattern': "url('/images/cloud-pattern.svg')",
+                'seal-pattern': "url('/images/seal-pattern.svg')",
             },
             animation: {
                 'float': 'float 6s ease-in-out infinite',
@@ -68,6 +83,14 @@ const config: Config = {
                 'leaf-fall': 'leafFall 10s linear infinite',
                 'sharingan-spin': 'sharinganSpin 3s linear infinite',
                 'smoke-poof': 'smokePoof 0.5s ease-out',
+                // New animations
+                'chakra-flow': 'chakraFlow 2s linear infinite',
+                'rasengan-spin': 'rasenganSpin 0.5s linear infinite',
+                'bijuu-flicker': 'bijuuFlicker 0.3s ease-in-out infinite',
+                'seal-glow': 'sealGlow 2s ease-in-out infinite',
+                'kunai-throw': 'kunaiThrow 1s ease-out',
+                'jutsu-activate': 'jutsuActivate 0.5s ease-out',
+                'flame-dance': 'flameDance 1.5s ease-in-out infinite',
             },
             keyframes: {
                 float: {
@@ -98,10 +121,43 @@ const config: Config = {
                     '0%': { transform: 'scale(0)', opacity: '1' },
                     '100%': { transform: 'scale(2)', opacity: '0' },
                 },
+                // New keyframes
+                chakraFlow: {
+                    '0%': { backgroundPosition: '0% 50%' },
+                    '100%': { backgroundPosition: '200% 50%' },
+                },
+                rasenganSpin: {
+                    '0%': { transform: 'rotate(0deg) scale(1)' },
+                    '50%': { transform: 'rotate(180deg) scale(1.05)' },
+                    '100%': { transform: 'rotate(360deg) scale(1)' },
+                },
+                bijuuFlicker: {
+                    '0%, 100%': { opacity: '0.7', filter: 'brightness(1)' },
+                    '50%': { opacity: '1', filter: 'brightness(1.2)' },
+                },
+                sealGlow: {
+                    '0%, 100%': { boxShadow: '0 0 10px rgba(255, 107, 53, 0.3)' },
+                    '50%': { boxShadow: '0 0 30px rgba(255, 107, 53, 0.6)' },
+                },
+                kunaiThrow: {
+                    '0%': { transform: 'translateX(-100%) rotate(-45deg)', opacity: '0' },
+                    '50%': { opacity: '1' },
+                    '100%': { transform: 'translateX(100%) rotate(-45deg)', opacity: '0' },
+                },
+                jutsuActivate: {
+                    '0%': { transform: 'scale(0.8)', opacity: '0' },
+                    '50%': { transform: 'scale(1.1)', opacity: '1' },
+                    '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                flameDance: {
+                    '0%, 100%': { transform: 'scaleY(1) translateY(0)' },
+                    '25%': { transform: 'scaleY(1.1) translateY(-2px)' },
+                    '50%': { transform: 'scaleY(0.9) translateY(0)' },
+                    '75%': { transform: 'scaleY(1.05) translateY(-1px)' },
+                },
             },
         },
     },
     plugins: [],
 }
 export default config
-
