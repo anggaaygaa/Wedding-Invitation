@@ -3,9 +3,10 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { Gift, Copy, Check, CreditCard, QrCode, Smartphone } from 'lucide-react'
+import { Gift, Copy, Check, CreditCard, QrCode, Smartphone, Scroll } from 'lucide-react'
 import Image from 'next/image'
-import NarutoOrnament from '../ui/NarutoOrnament'
+import NarutoOrnament, { NarutoCloudBackground, SealPatternBackground } from '../ui/NarutoOrnament'
+import { ShurikenDecoration, FuinjutsuSeal, KonohaLeaf, KunaiDecoration } from '../ui/NarutoDecorations'
 import { getGiftAccounts, GiftAccount } from '@/lib/supabase'
 
 function BankCard({ account }: { account: GiftAccount }) {
@@ -134,13 +135,24 @@ export default function GiftSection() {
     }, [])
 
     return (
-        <section id="gift" className="py-20 px-4 bg-ivory relative">
+        <section id="gift" className="py-20 px-4 bg-ivory dark:bg-dark-bg relative overflow-hidden">
+            {/* Cloud background */}
+            <NarutoCloudBackground />
+
+            {/* Corner seals */}
+            <div className="absolute top-10 left-10 opacity-10 hidden lg:block">
+                <FuinjutsuSeal className="w-20 h-20 animate-spin-slow" />
+            </div>
+            <div className="absolute bottom-10 right-10 opacity-10 hidden lg:block">
+                <FuinjutsuSeal className="w-20 h-20 animate-spin-slow [animation-direction:reverse]" />
+            </div>
+
             {/* Top Ornament */}
             <div className="absolute top-0 left-0 right-0">
                 <NarutoOrnament variant="top" />
             </div>
 
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto relative z-10">
                 {/* Section Title */}
                 <motion.div
                     ref={ref}
@@ -149,27 +161,32 @@ export default function GiftSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
-                        <Gift size={32} className="text-gold" />
+                    <div className="w-16 h-16 rounded-full bg-naruto-orange/10 flex items-center justify-center mx-auto mb-4">
+                        <ShurikenDecoration className="w-10 h-10 opacity-60 animate-spin-slow" />
                     </div>
-                    <p className="text-gold text-sm tracking-[0.2em] uppercase mb-2">
-                        Hadiah
+                    <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
+                        🎁 Hadiah
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown mb-4">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Amplop Digital
                     </h2>
                     <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
-                    <p className="text-brown/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
+                    <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
                         Tanpa mengurangi rasa hormat, bagi Bapak/Ibu/Saudara/i yang ingin
-                        memberikan tanda kasih dapat melalui:
+                        memberikan tanda kasih ninja dapat melalui: 🍥
                     </p>
                 </motion.div>
 
-                {/* Loading State */}
+                {/* Rasengan-style Loading State */}
                 {loading && (
-                    <div className="flex justify-center items-center py-8">
-                        <div className="animate-spin w-8 h-8 border-2 border-gold border-t-transparent rounded-full" />
+                    <div className="flex flex-col justify-center items-center py-8">
+                        <div className="relative w-12 h-12">
+                            <div className="absolute inset-0 rounded-full border-4 border-chakra-blue/30 animate-spin" />
+                            <div className="absolute inset-2 rounded-full border-4 border-chakra-blue/50 animate-spin [animation-direction:reverse]" />
+                            <div className="absolute inset-4 rounded-full bg-chakra-blue/60 animate-pulse" />
+                        </div>
+                        <p className="text-brown/50 dark:text-cream/50 text-sm mt-4">Memuat...</p>
                     </div>
                 )}
 

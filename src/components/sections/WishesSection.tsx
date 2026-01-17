@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-import { Send, MessageCircle } from 'lucide-react'
-import NarutoOrnament from '../ui/NarutoOrnament'
+import { Send, MessageCircle, Scroll } from 'lucide-react'
+import NarutoOrnament, { NarutoCloudBackground, SealPatternBackground } from '../ui/NarutoOrnament'
+import { ShurikenDecoration, KonohaLeaf, FuinjutsuSeal, KunaiDecoration } from '../ui/NarutoDecorations'
 import { Wish, submitWish, getWishes, subscribeToWishes } from '@/lib/supabase'
 
 // Demo wishes for display before Supabase is connected
@@ -105,8 +106,19 @@ export default function WishesSection() {
     }
 
     return (
-        <section id="wishes" className="py-20 px-4 bg-cream dark:bg-dark-bg relative">
-            <div className="max-w-4xl mx-auto">
+        <section id="wishes" className="py-20 px-4 bg-cream dark:bg-dark-bg relative overflow-hidden">
+            {/* Cloud background pattern */}
+            <NarutoCloudBackground />
+
+            {/* Decorative elements */}
+            <div className="absolute top-10 left-10 opacity-10 hidden lg:block">
+                <FuinjutsuSeal className="w-24 h-24 animate-spin-slow" />
+            </div>
+            <div className="absolute bottom-10 right-10 opacity-10 hidden lg:block">
+                <FuinjutsuSeal className="w-24 h-24 animate-spin-slow [animation-direction:reverse]" />
+            </div>
+
+            <div className="max-w-4xl mx-auto relative z-10">
                 {/* Section Title */}
                 <motion.div
                     ref={ref}
@@ -115,6 +127,9 @@ export default function WishesSection() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
+                    <div className="flex justify-center mb-4">
+                        <ShurikenDecoration className="w-10 h-10 opacity-40 animate-spin-slow" />
+                    </div>
                     <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
                         💬 Ucapan & Doa
                     </p>
@@ -124,7 +139,7 @@ export default function WishesSection() {
                     <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
                     <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
-                        Berikan doa dan ucapan terbaik untuk kedua mempelai
+                        Berikan doa dan ucapan terbaik untuk kedua mempelai - &ldquo;Believe it!&rdquo; 🍥
                     </p>
                 </motion.div>
 

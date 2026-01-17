@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
-import { Check, Users, Send } from 'lucide-react'
-import NarutoOrnament from '../ui/NarutoOrnament'
+import { Check, Users, Send, Scroll } from 'lucide-react'
+import NarutoOrnament, { NarutoCloudBackground, SealPatternBackground } from '../ui/NarutoOrnament'
+import { ShurikenDecoration, KonohaLeaf, FuinjutsuSeal } from '../ui/NarutoDecorations'
 import { submitRSVP } from '@/lib/supabase'
 
 export default function RsvpSection() {
@@ -45,26 +46,31 @@ export default function RsvpSection() {
 
     if (isSubmitted) {
         return (
-            <section id="rsvp" className="py-20 px-4 bg-ivory relative">
+            <section id="rsvp" className="py-20 px-4 bg-ivory dark:bg-dark-bg relative overflow-hidden">
+                <NarutoCloudBackground />
+
                 <div className="absolute top-0 left-0 right-0">
                     <NarutoOrnament variant="top" />
                 </div>
 
-                <div className="max-w-lg mx-auto text-center">
+                <div className="max-w-lg mx-auto text-center relative z-10">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="bg-white rounded-2xl p-8 shadow-lg shadow-gold/5 border border-gold/10"
+                        className="bg-white dark:bg-dark-surface rounded-2xl p-8 shadow-lg border-2 border-naruto-orange/20 relative overflow-hidden"
                     >
-                        <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-                            <Check size={32} className="text-green-600" />
+                        {/* Mission scroll background */}
+                        <NarutoOrnament variant="missionScroll" />
+
+                        <div className="w-16 h-16 rounded-full bg-konoha-green/20 flex items-center justify-center mx-auto mb-6 relative">
+                            <KonohaLeaf className="w-10 h-10 text-konoha-green" />
                         </div>
-                        <h3 className="font-serif text-2xl text-brown mb-4">
-                            Terima Kasih!
+                        <h3 className="font-serif text-2xl text-brown dark:text-cream mb-4 relative">
+                            Misi Diterima! ✔️
                         </h3>
-                        <p className="text-brown/70">
+                        <p className="text-brown/70 dark:text-cream/70 relative">
                             Konfirmasi kehadiran Anda telah kami terima.
-                            Kami menantikan kehadiran Anda di hari bahagia kami.
+                            Kami menantikan kehadiran Anda di hari bahagia kami. Dattebayo! 🍥
                         </p>
                     </motion.div>
                 </div>

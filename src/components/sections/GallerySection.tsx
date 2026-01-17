@@ -5,7 +5,8 @@ import { useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { X, ImageIcon } from 'lucide-react'
 import Image from 'next/image'
-import NarutoOrnament from '../ui/NarutoOrnament'
+import NarutoOrnament, { NarutoCloudBackground, SealPatternBackground } from '../ui/NarutoOrnament'
+import { ShurikenDecoration, KonohaLeaf, SharinganPattern, FuinjutsuSeal } from '../ui/NarutoDecorations'
 import { getGalleryPhotos, GalleryPhoto } from '@/lib/supabase'
 
 export default function GallerySection() {
@@ -36,8 +37,19 @@ export default function GallerySection() {
 
     return (
         <>
-            <section id="gallery" className="py-20 px-4 bg-white dark:bg-dark-bg relative">
-                <div className="max-w-5xl mx-auto">
+            <section id="gallery" className="py-20 px-4 bg-white dark:bg-dark-bg relative overflow-hidden">
+                {/* Subtle cloud background */}
+                <NarutoCloudBackground />
+
+                {/* Corner decorations */}
+                <div className="absolute top-8 left-8 opacity-15 hidden lg:block">
+                    <SharinganPattern className="w-20 h-20 animate-spin-slow" />
+                </div>
+                <div className="absolute top-8 right-8 opacity-15 hidden lg:block">
+                    <SharinganPattern className="w-20 h-20 animate-spin-slow" />
+                </div>
+
+                <div className="max-w-5xl mx-auto relative z-10">
                     {/* Section Title */}
                     <motion.div
                         ref={ref}
@@ -46,8 +58,11 @@ export default function GallerySection() {
                         transition={{ duration: 0.8 }}
                         className="text-center mb-12"
                     >
+                        <div className="flex justify-center mb-4">
+                            <ShurikenDecoration className="w-10 h-10 opacity-40 animate-spin-slow" />
+                        </div>
                         <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
-                            📸 Galeri
+                            📸 Galeri Misi
                         </p>
                         <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                             Momen Bahagia
@@ -55,14 +70,19 @@ export default function GallerySection() {
                         <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
 
                         <p className="text-brown/70 dark:text-cream/70 max-w-lg mx-auto mt-6 text-sm md:text-base">
-                            Kumpulan momen indah perjalanan cinta kami
+                            Kumpulan momen indah perjalanan cinta kami - dari genin hingga chunin 🍥
                         </p>
                     </motion.div>
 
-                    {/* Loading State */}
+                    {/* Rasengan-style Loading State */}
                     {loading && (
-                        <div className="flex justify-center items-center py-12">
-                            <div className="animate-spin w-8 h-8 border-2 border-naruto-orange border-t-transparent rounded-full" />
+                        <div className="flex flex-col justify-center items-center py-12">
+                            <div className="relative w-16 h-16">
+                                <div className="absolute inset-0 rounded-full border-4 border-chakra-blue/30 animate-spin" />
+                                <div className="absolute inset-2 rounded-full border-4 border-chakra-blue/50 animate-spin [animation-direction:reverse]" />
+                                <div className="absolute inset-4 rounded-full bg-chakra-blue/60 animate-pulse" />
+                            </div>
+                            <p className="text-brown/50 dark:text-cream/50 text-sm mt-4">Mengumpulkan momen...</p>
                         </div>
                     )}
 
@@ -75,14 +95,14 @@ export default function GallerySection() {
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group border border-naruto-orange/10"
+                                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group border-2 border-naruto-orange/10 hover:border-naruto-orange/40 transition-colors"
                                     onClick={() => setSelectedImage(photo)}
                                 >
                                     {imageErrors[photo.id || ''] ? (
-                                        // Placeholder when image fails to load
+                                        // Placeholder with Konoha leaf when image fails
                                         <div className="absolute inset-0 bg-gradient-to-br from-cream to-white dark:from-dark-surface dark:to-dark-card flex items-center justify-center">
                                             <div className="text-center">
-                                                <ImageIcon size={48} className="text-naruto-orange/40 mx-auto mb-2" />
+                                                <KonohaLeaf className="w-12 h-12 text-konoha-green/30 mx-auto mb-2" />
                                                 <p className="text-brown/40 dark:text-cream/40 text-xs">Foto {index + 1}</p>
                                             </div>
                                         </div>
@@ -98,11 +118,19 @@ export default function GallerySection() {
                                         />
                                     )}
 
-                                    {/* Hover Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-naruto-orange/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                                        <div className="w-12 h-12 rounded-full bg-white/90 dark:bg-dark-surface/90 flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform duration-300">
-                                            <span className="text-naruto-orange text-2xl font-bold">+</span>
+                                    {/* Naruto-themed Hover Overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-naruto-orange/50 via-naruto-orange/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                        <div className="relative">
+                                            <ShurikenDecoration className="w-12 h-12 opacity-0 group-hover:opacity-100 group-hover:animate-spin transition-all duration-500" />
                                         </div>
+                                    </div>
+
+                                    {/* Corner decorations that appear on hover */}
+                                    <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-60 transition-opacity duration-300">
+                                        <KonohaLeaf className="w-4 h-4 text-konoha-green" />
+                                    </div>
+                                    <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-60 transition-opacity duration-300">
+                                        <KonohaLeaf className="w-4 h-4 text-konoha-green -scale-x-100" />
                                     </div>
                                 </motion.div>
                             ))}

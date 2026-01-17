@@ -4,13 +4,15 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Palette, Shirt, Info } from 'lucide-react'
-import NarutoOrnament from '../ui/NarutoOrnament'
+import NarutoOrnament, { NarutoCloudBackground, SealPatternBackground } from '../ui/NarutoOrnament'
+import { ShurikenDecoration, KonohaLeaf, HokageSymbol, FuinjutsuSeal } from '../ui/NarutoDecorations'
 
 interface DressCodeItem {
     gender: 'pria' | 'wanita'
     title: string
     description: string
     colors: { name: string; hex: string }[]
+    icon: string
 }
 
 const dressCodeData: DressCodeItem[] = [
@@ -24,6 +26,7 @@ const dressCodeData: DressCodeItem[] = [
             { name: 'Uchiha Navy', hex: '#16213E' },
             { name: 'Scroll Cream', hex: '#FFF5E6' },
         ],
+        icon: '🥷',
     },
     {
         gender: 'wanita',
@@ -35,6 +38,7 @@ const dressCodeData: DressCodeItem[] = [
             { name: 'Hinata Lavender', hex: '#E6E6FA' },
             { name: 'Chakra Blue', hex: '#4169E1' },
         ],
+        icon: '👸',
     },
 ]
 
@@ -48,11 +52,19 @@ function DressCard({ item, delay }: { item: DressCodeItem; delay: number }) {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.6, delay }}
-            className="bg-white dark:bg-dark-surface rounded-2xl p-6 border border-naruto-orange/20 shadow-sm hover:shadow-md transition-shadow"
+            className="relative bg-white dark:bg-dark-surface rounded-2xl p-6 border-2 border-naruto-orange/20 shadow-sm hover:shadow-md hover:border-naruto-orange/40 transition-all group overflow-hidden"
         >
-            {/* Icon */}
-            <div className="w-14 h-14 rounded-full bg-naruto-orange/10 flex items-center justify-center mx-auto mb-4">
-                <Shirt size={28} className="text-naruto-orange" />
+            {/* Mission scroll background effect */}
+            <NarutoOrnament variant="missionScroll" />
+
+            {/* Corner Konoha leaf */}
+            <div className="absolute -top-2 -right-2 opacity-30 group-hover:opacity-60 transition-opacity">
+                <KonohaLeaf className="w-8 h-8 text-konoha-green" />
+            </div>
+
+            {/* Icon - Shinobi style */}
+            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-naruto-orange/20 to-naruto-yellow/10 flex items-center justify-center mx-auto mb-4 text-3xl border-2 border-naruto-orange/20 group-hover:border-naruto-orange/40 transition-colors">
+                {item.icon}
             </div>
 
             {/* Title */}
@@ -70,9 +82,9 @@ function DressCard({ item, delay }: { item: DressCodeItem; delay: number }) {
                 <span className="text-brown/50 dark:text-cream/50 text-xs block text-center">Rekomendasi Warna:</span>
                 <div className="flex items-center justify-center gap-2 flex-wrap">
                     {item.colors.map((color, index) => (
-                        <div key={index} className="flex flex-col items-center">
+                        <div key={index} className="flex flex-col items-center group/color">
                             <div
-                                className="w-8 h-8 rounded-full border-2 border-white shadow-md hover:scale-110 transition-transform"
+                                className="w-8 h-8 rounded-full border-2 border-white shadow-md hover:scale-110 transition-transform cursor-pointer"
                                 style={{ backgroundColor: color.hex }}
                                 title={color.name}
                             />
