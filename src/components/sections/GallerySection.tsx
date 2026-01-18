@@ -145,17 +145,7 @@ export default function GallerySection() {
                         </div>
                     )}
 
-                    {/* Database Info */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                        transition={{ duration: 0.8, delay: 0.8 }}
-                        className="text-center mt-8"
-                    >
-                        <p className="text-brown/40 dark:text-cream/40 text-xs italic">
-                            * Foto diambil dari database dan dapat dikelola secara dinamis
-                        </p>
-                    </motion.div>
+
                 </div>
             </section>
 

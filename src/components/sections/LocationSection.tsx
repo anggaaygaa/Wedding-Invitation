@@ -51,7 +51,7 @@ export default function LocationSection() {
                     initial={{ opacity: 0, y: 50 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="bg-white rounded-2xl overflow-hidden shadow-lg shadow-gold/5 border border-gold/10"
+                    className="bg-white dark:bg-dark-surface rounded-2xl overflow-hidden shadow-lg border border-naruto-orange/10"
                 >
                     {/* Map */}
                     <div className="relative h-48 md:h-64 lg:h-72 bg-cream">
@@ -68,19 +68,19 @@ export default function LocationSection() {
                     </div>
 
                     {/* Address Info */}
-                    <div className="p-6 md:p-8">
-                        <div className="flex items-start gap-4 mb-6">
-                            <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0">
-                                <MapPin size={24} className="text-gold" />
+                    <div className="p-5 md:p-6">
+                        <div className="flex items-start gap-3 mb-4">
+                            <div className="w-10 h-10 rounded-full bg-naruto-orange/10 flex items-center justify-center flex-shrink-0">
+                                <MapPin size={20} className="text-naruto-orange" />
                             </div>
                             <div>
-                                <h4 className="text-brown font-semibold mb-1">
+                                <h4 className="text-brown dark:text-cream font-semibold mb-1 text-sm">
                                     Kediaman Mempelai Wanita
                                 </h4>
-                                <p className="text-brown/70 text-sm leading-relaxed">
+                                <p className="text-brown/70 dark:text-cream/70 text-sm leading-relaxed">
                                     {address}
                                 </p>
-                                <p className="text-gold text-sm mt-2">
+                                <p className="text-naruto-orange text-xs mt-1">
                                     (Selatan Balai RW)
                                 </p>
                             </div>
@@ -89,9 +89,9 @@ export default function LocationSection() {
                         {/* Direction Button */}
                         <button
                             onClick={openMaps}
-                            className="w-full btn-primary flex items-center justify-center gap-2"
+                            className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-naruto-orange to-naruto-yellow text-white font-medium rounded-full shadow-md hover:shadow-lg transition-all hover:scale-[1.02] text-sm"
                         >
-                            <Navigation size={18} />
+                            <Navigation size={16} />
                             Buka di Google Maps
                         </button>
                     </div>

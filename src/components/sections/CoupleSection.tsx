@@ -28,83 +28,42 @@ function CoupleCard({ name, fullName, parentInfo, order, instagram, delay = 0 }:
             transition={{ duration: 0.8, delay }}
             className="text-center"
         >
-            {/* Photo Frame with Naruto/Ninja styling - Enhanced */}
-            <div className="relative w-52 h-52 md:w-64 md:h-64 mx-auto mb-8 group">
-                {/* Outer Sharingan-style rotating ring */}
-                <div className="absolute -inset-4 rounded-full opacity-20 dark:opacity-30">
-                    <SharinganPattern className="w-full h-full animate-spin-slow" />
-                </div>
+            {/* Photo Frame - Simplified */}
+            <div className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-6 group">
 
-                {/* Outer animated glow ring - chakra blue */}
-                <div className="absolute inset-0 rounded-full border-2 border-chakra-blue/30 animate-chakra-pulse" />
 
-                {/* Rotating shuriken-style dashed border */}
-                <div className="absolute -inset-2 rounded-full border-2 border-dashed border-naruto-orange/20 animate-spin-slow" />
-
-                {/* Fuinjutsu seal pattern ring */}
-                <div className="absolute -inset-1 opacity-15 dark:opacity-25">
-                    <FuinjutsuSeal className="w-full h-full animate-spin-slow [animation-direction:reverse] [animation-duration:20s]" />
-                </div>
-
-                {/* Middle ring with gradient */}
-                <div className="absolute inset-2 rounded-full border-2 border-naruto-orange/40 bg-gradient-to-br from-naruto-orange/5 to-transparent" />
-
-                {/* Inner decorative ring */}
-                <div className="absolute inset-4 rounded-full border border-naruto-orange/50 overflow-hidden">
-                    {/* Cloud pattern inside frame */}
-                    <div className="absolute inset-0 opacity-20">
-                        <NarutoCloudBackground />
-                    </div>
-                </div>
+                {/* Outer ring */}
+                <div className="absolute inset-0 rounded-full border-2 border-naruto-orange/30 bg-gradient-to-br from-naruto-orange/5 to-transparent" />
 
                 {/* Photo container */}
-                <div className="absolute inset-6 rounded-full bg-gradient-to-br from-ivory via-white to-cream dark:from-dark-surface dark:via-dark-card dark:to-dark-elevated flex items-center justify-center overflow-hidden border-2 border-naruto-orange/30 shadow-lg shadow-naruto-orange/20 group-hover:shadow-naruto-orange/40 dark:group-hover:shadow-naruto-orange/30 transition-shadow duration-500">
+                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white via-cream to-ivory dark:from-dark-surface dark:via-dark-card dark:to-dark-elevated flex items-center justify-center overflow-hidden border border-naruto-orange/20 shadow-md">
                     {/* Placeholder - Replace with actual image */}
                     <div className="text-center">
-                        <div className="text-5xl mb-2 opacity-50 group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-4xl mb-1 opacity-60">
                             {order === 'putra' ? '🥷' : '👸'}
                         </div>
                         <p className="text-brown/40 dark:text-cream/40 text-xs">Foto</p>
                     </div>
                 </div>
 
-                {/* Corner ornaments with Konoha leaves */}
-                <div className="absolute -top-3 -left-3 w-10 h-10">
-                    <NarutoOrnament variant="corner" className="w-full h-full opacity-70" />
-                </div>
-                <div className="absolute -top-3 -right-3 w-10 h-10 -scale-x-100">
-                    <NarutoOrnament variant="corner" className="w-full h-full opacity-70" />
-                </div>
-                <div className="absolute -bottom-3 -left-3 w-10 h-10 -scale-y-100">
-                    <NarutoOrnament variant="corner" className="w-full h-full opacity-70" />
-                </div>
-                <div className="absolute -bottom-3 -right-3 w-10 h-10 scale-[-1]">
-                    <NarutoOrnament variant="corner" className="w-full h-full opacity-70" />
-                </div>
             </div>
 
-            {/* Name with Naruto styling */}
-            <div className="mb-4">
-                <h3 className="font-serif text-4xl md:text-5xl text-naruto-orange mb-3 tracking-wide drop-shadow-md">
+            {/* Name */}
+            <div className="mb-3">
+                <h3 className="font-serif text-3xl md:text-4xl text-naruto-orange mb-2 tracking-wide">
                     {name}
                 </h3>
-                <div className="flex items-center justify-center gap-3 mb-3">
-                    <div className="w-8 h-px bg-naruto-orange/40" />
-                    <KonohaLeaf className="w-5 h-5 text-konoha-green opacity-60" />
-                    <div className="w-8 h-px bg-naruto-orange/40" />
-                </div>
-                <p className="text-brown dark:text-cream font-medium text-lg">
+                <p className="text-brown dark:text-cream font-medium text-base">
                     {fullName}
                 </p>
             </div>
 
-            {/* Parent Info with ninja border */}
-            <div className="relative inline-block px-6 py-3 mb-4">
-                <div className="absolute inset-0 border border-naruto-orange/30 dark:border-naruto-orange/40 rounded-lg bg-white/50 dark:bg-dark-surface/50" />
-                <p className="text-naruto-orange dark:text-naruto-orange text-sm mb-1 relative z-10 font-medium">
+            {/* Parent Info */}
+            <div className="inline-block px-4 py-2 rounded-lg bg-white/60 dark:bg-dark-surface/60 border border-naruto-orange/20">
+                <p className="text-naruto-orange text-xs mb-1 font-medium">
                     {order === 'putra' ? 'Putra dari' : 'Putri dari'}
                 </p>
-                <p className="text-brown dark:text-cream text-sm leading-relaxed relative z-10">
+                <p className="text-brown/80 dark:text-cream/80 text-sm leading-relaxed">
                     {parentInfo}
                 </p>
             </div>

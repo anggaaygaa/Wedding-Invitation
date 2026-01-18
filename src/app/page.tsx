@@ -248,15 +248,13 @@ function HomeContent() {
                     </div>
 
                     <Navigation />
+                    <HeroSection />
                     <CoupleSection />
                     <LoveStorySection />
                     <EventSection />
                     <DressCodeSection />
                     <LocationSection />
                     <GallerySection />
-                    <VideoSection />
-                    <PreweddingPhotosSection />
-                    <HeroSection />
                     <RsvpSection />
                     <WishesSection />
                     <GiftSection />
