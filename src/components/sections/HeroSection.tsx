@@ -13,7 +13,7 @@ export default function HeroSection() {
     return (
         <section
             id="home"
-            className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden"
+            className="relative min-h-screen flex flex-col items-center justify-center px-4 md:px-6 py-16 md:py-20 overflow-hidden"
         >
             {/* Kurama Silhouette Background - subtle backdrop */}
             <div className="absolute inset-0 flex items-center justify-center opacity-10 dark:opacity-20 pointer-events-none">
@@ -57,7 +57,7 @@ export default function HeroSection() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 text-center max-w-2xl mx-auto">
+            <div className="relative z-10 text-center max-w-xl mx-auto">
                 {/* Bismillah */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -116,10 +116,10 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="mb-6"
                 >
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-naruto-orange mb-2 tracking-wide drop-shadow-lg dark:drop-shadow-[0_0_15px_rgba(255,107,53,0.5)]">
+                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-naruto-orange mb-2 tracking-wide drop-shadow-lg dark:drop-shadow-[0_0_15px_rgba(255,107,53,0.5)]">
                         Eko
                     </h1>
-                    <div className="flex items-center justify-center gap-6 my-4">
+                    <div className="flex items-center justify-center gap-4 md:gap-6 my-3 md:my-4">
                         <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-naruto-orange/60" />
                         <motion.div
                             animate={{ rotate: 360 }}
@@ -129,7 +129,7 @@ export default function HeroSection() {
                         </motion.div>
                         <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-naruto-orange/60" />
                     </div>
-                    <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-naruto-orange tracking-wide drop-shadow-lg dark:drop-shadow-[0_0_15px_rgba(255,107,53,0.5)]">
+                    <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-naruto-orange tracking-wide drop-shadow-lg dark:drop-shadow-[0_0_15px_rgba(255,107,53,0.5)]">
                         Keke
                     </h1>
                 </motion.div>

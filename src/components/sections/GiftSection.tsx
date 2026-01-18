@@ -135,7 +135,7 @@ export default function GiftSection() {
     }, [])
 
     return (
-        <section id="gift" className="py-20 px-4 bg-ivory dark:bg-dark-bg relative overflow-hidden">
+        <section id="gift" className="py-16 md:py-20 px-4 md:px-6 bg-ivory dark:bg-dark-bg relative overflow-hidden">
             {/* Cloud background */}
             <NarutoCloudBackground />
 
@@ -159,7 +159,7 @@ export default function GiftSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-12"
+                    className="text-center mb-8 md:mb-10"
                 >
                     <div className="w-16 h-16 rounded-full bg-naruto-orange/10 flex items-center justify-center mx-auto mb-4">
                         <ShurikenDecoration className="w-10 h-10 opacity-60 animate-spin-slow" />
@@ -167,7 +167,7 @@ export default function GiftSection() {
                     <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
                         🎁 Hadiah
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
+                    <h2 className="font-serif text-2xl md:text-3xl text-brown dark:text-cream mb-3">
                         Amplop Digital
                     </h2>
                     <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />

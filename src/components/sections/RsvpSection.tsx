@@ -46,7 +46,7 @@ export default function RsvpSection() {
 
     if (isSubmitted) {
         return (
-            <section id="rsvp" className="py-20 px-4 bg-ivory dark:bg-dark-bg relative overflow-hidden">
+            <section id="rsvp" className="py-16 md:py-20 px-4 md:px-6 bg-ivory dark:bg-dark-bg relative overflow-hidden">
                 <NarutoCloudBackground />
 
                 <div className="absolute top-0 left-0 right-0">
@@ -83,7 +83,7 @@ export default function RsvpSection() {
     }
 
     return (
-        <section id="rsvp" className="py-20 px-4 bg-ivory relative">
+        <section id="rsvp" className="py-16 md:py-20 px-4 md:px-6 bg-ivory relative">
             {/* Top Ornament */}
             <div className="absolute top-0 left-0 right-0">
                 <NarutoOrnament variant="top" />
@@ -96,12 +96,12 @@ export default function RsvpSection() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-12"
+                    className="text-center mb-8 md:mb-10"
                 >
                     <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
                         ✉️ RSVP
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
+                    <h2 className="font-serif text-2xl md:text-3xl text-brown dark:text-cream mb-3">
                         Konfirmasi Kehadiran
                     </h2>
                     <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />

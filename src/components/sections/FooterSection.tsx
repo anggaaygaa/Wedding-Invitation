@@ -6,7 +6,7 @@ import { KonohaLeaf } from '../ui/NarutoDecorations'
 
 export default function FooterSection() {
     return (
-        <footer className="py-16 px-4 bg-uchiha-navy text-white relative overflow-hidden">
+        <footer className="py-12 md:py-14 px-4 md:px-6 bg-uchiha-navy text-white relative overflow-hidden">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-10">
                 <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -29,7 +29,7 @@ export default function FooterSection() {
                     <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-4">
                         ありがとう • Terima Kasih
                     </p>
-                    <h2 className="font-serif text-2xl md:text-3xl mb-6 text-naruto-yellow">
+                    <h2 className="font-serif text-xl md:text-2xl mb-4 text-naruto-yellow">
                         Eko & Keke
                     </h2>
 
@@ -60,7 +60,7 @@ export default function FooterSection() {
                 </div>
 
                 {/* Naruto Quote */}
-                <div className="mb-8 px-6 py-4 bg-white/5 rounded-xl border border-naruto-orange/20">
+                <div className="mb-6 px-4 py-3 bg-white/5 rounded-xl border border-naruto-orange/20">
                     <p className="text-white/60 italic text-sm">
                         &ldquo;I&apos;m not gonna run away and I never go back on my word, that is my ninja way!&rdquo;
                     </p>

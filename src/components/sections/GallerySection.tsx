@@ -37,7 +37,7 @@ export default function GallerySection() {
 
     return (
         <>
-            <section id="gallery" className="py-20 px-4 bg-white dark:bg-dark-bg relative overflow-hidden">
+            <section id="gallery" className="py-16 md:py-20 px-4 md:px-6 bg-white dark:bg-dark-bg relative overflow-hidden">
                 {/* Subtle cloud background */}
                 <NarutoCloudBackground />
 
@@ -49,14 +49,14 @@ export default function GallerySection() {
                     <SharinganPattern className="w-20 h-20 animate-spin-slow" />
                 </div>
 
-                <div className="max-w-5xl mx-auto relative z-10">
+                <div className="max-w-4xl mx-auto relative z-10">
                     {/* Section Title */}
                     <motion.div
                         ref={ref}
                         initial={{ opacity: 0, y: 30 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                         transition={{ duration: 0.8 }}
-                        className="text-center mb-12"
+                        className="text-center mb-8 md:mb-10"
                     >
                         <div className="flex justify-center mb-4">
                             <ShurikenDecoration className="w-10 h-10 opacity-40 animate-spin-slow" />
@@ -64,7 +64,7 @@ export default function GallerySection() {
                         <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
                             📸 Galeri Misi
                         </p>
-                        <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
+                        <h2 className="font-serif text-2xl md:text-3xl text-brown dark:text-cream mb-3">
                             Momen Bahagia
                         </h2>
                         <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />

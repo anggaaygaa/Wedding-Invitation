@@ -22,25 +22,25 @@ export default function LocationSection() {
     }
 
     return (
-        <section id="location" className="py-20 px-4 bg-ivory relative">
+        <section id="location" className="py-16 md:py-20 px-4 md:px-6 bg-ivory relative">
             {/* Top Ornament */}
             <div className="absolute top-0 left-0 right-0">
                 <NarutoOrnament variant="top" />
             </div>
 
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-3xl mx-auto">
                 {/* Section Title */}
                 <motion.div
                     ref={ref}
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-12"
+                    className="text-center mb-8 md:mb-10"
                 >
                     <p className="text-naruto-orange text-sm tracking-[0.2em] uppercase mb-2">
                         📍 Lokasi
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
+                    <h2 className="font-serif text-2xl md:text-3xl text-brown dark:text-cream mb-3">
                         Petunjuk Arah
                     </h2>
                     <NarutoOrnament variant="divider" className="max-w-xs mx-auto" />
@@ -54,7 +54,7 @@ export default function LocationSection() {
                     className="bg-white rounded-2xl overflow-hidden shadow-lg shadow-gold/5 border border-gold/10"
                 >
                     {/* Map */}
-                    <div className="relative h-64 md:h-80 bg-cream">
+                    <div className="relative h-48 md:h-64 lg:h-72 bg-cream">
                         <iframe
                             src={mapEmbedUrl}
                             width="100%"

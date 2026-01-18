@@ -17,20 +17,20 @@ export default function VideoSection() {
     const hasVideo = Boolean(YOUTUBE_VIDEO_ID)
 
     return (
-        <section id="video" className="py-20 px-4 bg-cream dark:bg-dark-bg relative overflow-hidden">
-            <div className="max-w-4xl mx-auto relative z-10">
+        <section id="video" className="py-16 md:py-20 px-4 md:px-6 bg-cream dark:bg-dark-bg relative overflow-hidden">
+            <div className="max-w-3xl mx-auto relative z-10">
                 {/* Section Title */}
                 <motion.div
                     ref={ref}
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-12"
+                    className="text-center mb-8 md:mb-10"
                 >
                     <p className="text-naruto-orange text-sm tracking-[0.3em] uppercase mb-3">
                         🎬 Video
                     </p>
-                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
+                    <h2 className="font-serif text-2xl md:text-3xl text-brown dark:text-cream mb-3">
                         Prewedding Video
                     </h2>
 

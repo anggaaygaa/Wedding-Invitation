@@ -130,7 +130,7 @@ export default function CoupleSection() {
     const isInView = useInView(ref, { once: true, margin: '-100px' })
 
     return (
-        <section id="couple" className="py-24 px-4 bg-ivory relative overflow-hidden">
+        <section id="couple" className="py-16 md:py-20 px-4 md:px-6 bg-ivory relative overflow-hidden">
             {/* Background Pattern */}
             <NarutoCloudBackground />
 
@@ -139,26 +139,26 @@ export default function CoupleSection() {
                 <NarutoOrnament variant="top" />
             </div>
 
-            <div className="max-w-5xl mx-auto relative z-10">
+            <div className="max-w-4xl mx-auto relative z-10">
                 {/* Section Title */}
                 <motion.div
                     ref={ref}
                     initial={{ opacity: 0, y: 30 }}
                     animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                     transition={{ duration: 0.8 }}
-                    className="text-center mb-16"
+                    className="text-center mb-10 md:mb-12"
                 >
                     <p className="text-naruto-orange text-sm tracking-[0.3em] uppercase mb-3">
                         Mempelai
                     </p>
-                    <h2 className="font-serif text-4xl md:text-5xl text-brown dark:text-cream mb-6">
+                    <h2 className="font-serif text-3xl md:text-4xl text-brown dark:text-cream mb-4">
                         Calon Pengantin
                     </h2>
 
                     <NarutoOrnament variant="divider" className="max-w-sm mx-auto" />
 
                     {/* Ayat Al-Quran */}
-                    <div className="mt-8 max-w-2xl mx-auto">
+                    <div className="mt-6 max-w-xl mx-auto">
                         <p className="text-brown/80 dark:text-cream/80 italic text-sm md:text-base leading-relaxed">
                             &ldquo;Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu
                             pasangan hidup dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram
@@ -214,7 +214,7 @@ export default function CoupleSection() {
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="text-center mt-16"
+                    className="text-center mt-10 md:mt-12"
                 >
                     <div className="inline-block px-8 py-4 bg-white/60 backdrop-blur-sm rounded-2xl border border-naruto-orange/20">
                         <p className="text-brown/60 italic text-sm">
